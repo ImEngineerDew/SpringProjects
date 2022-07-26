@@ -1,10 +1,10 @@
-package com.toadsdewin.readlist;
+package com.toadsdewin.readingList;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReadlistApplicationTests {
+class ReadingListApplicationTests {
 
 	@Test
 	void contextLoads() {

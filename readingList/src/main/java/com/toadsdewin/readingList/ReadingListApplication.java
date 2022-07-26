@@ -1,13 +1,13 @@
-package com.toadsdewin.readlist;
+package com.toadsdewin.readingList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReadlistApplication {
+public class ReadingListApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReadlistApplication.class, args);
+		SpringApplication.run(ReadingListApplication.class, args);
 	}
 
 }
