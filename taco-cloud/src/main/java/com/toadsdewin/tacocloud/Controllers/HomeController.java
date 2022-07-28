@@ -1,8 +1,9 @@
 package com.toadsdewin.tacocloud.Controllers;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HomeController
 {
     @GetMapping("/")
@@ -12,7 +13,7 @@ public class HomeController
     }
 
     /*This is a getMapping test*/
-    @GetMapping("/sum")
+    /*@GetMapping("/sum")
     public String sum(Integer a, Integer b, Integer result)
     {
         a= 12;
@@ -20,5 +21,5 @@ public class HomeController
         result = a+b;
 
         return "The sum is equals to: "+result;
-    }
+    }*/
 }
