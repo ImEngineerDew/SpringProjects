@@ -24,7 +24,7 @@ public class testHome {
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
                 .andExpect(content().string(
-                        containsString("Pagina de inicio")));
+                        containsString("Página de inicio")));
     }
 
 }
