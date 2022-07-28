@@ -1,4 +1,5 @@
 package com.toadsdewin.tacocloud;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -12,18 +13,18 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(HomeController.class)
-public class HomeControllerTest
-{
+public class testHome {
+
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Test
-    public void testHomePage() throws Exception
-    {
+    public void testHomePage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
                 .andExpect(content().string(
-                        containsString("Welcome to...")));
+                        containsString("Pagina de inicio")));
     }
+
 }
