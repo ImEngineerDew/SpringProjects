@@ -7,5 +7,5 @@ import java.util.List;
 public class Taco
 {
     private String name;
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients; /*Using the ingredients for create a taco*/
 }
