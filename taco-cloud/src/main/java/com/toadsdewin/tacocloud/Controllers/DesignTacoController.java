@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
+@RequestMapping("/designYourTaco")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
