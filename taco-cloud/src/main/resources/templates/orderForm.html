@@ -17,43 +17,43 @@
             <img th:src="@{/images/taco.png}", height="320" width="480"/>
         </center>
     <h3 style = "font-family: Arial">Your tacos in this order:</h3>
-    <a th:href="@{/designYourTaco}" id="another">Design another taco</a><br/>
+    <a th:href="@{/designYourTaco}" id="another", style = "font-family: Arial" >Design another taco</a><br/>
     <ul>
         <li th:each="taco : ${tacoOrder.tacos}">
             <span th:text="${taco.name}">taco name</span></li>
     </ul>
 
-    <h3>Deliver my taco masterpieces to...</h3>
-    <label for="deliveryName">Name: </label>
+    <h3 style = "font-family: Arial">Deliver my taco masterpieces to...</h3>
+    <label for="deliveryName", style = "font-family: Arial">Name: </label>
     <input type="text" th:field="*{deliveryName}"/>
     <br/>
 
-    <label for="deliveryStreet">Street address: </label>
+    <label for="deliveryStreet", style = "font-family: Arial">Street address: </label>
     <input type="text" th:field="*{deliveryStreet}"/>
     <br/>
 
-    <label for="deliveryCity">City: </label>
+    <label for="deliveryCity", style = "font-family: Arial">City: </label>
     <input type="text" th:field="*{deliveryCity}"/>
     <br/>
 
-    <label for="deliveryState">State: </label>
+    <label for="deliveryState", style = "font-family: Arial">State: </label>
     <input type="text" th:field="*{deliveryState}"/>
     <br/>
 
-    <label for="deliveryZip">Zip code: </label>
+    <label for="deliveryZip", style = "font-family: Arial">Zip code: </label>
     <input type="text" th:field="*{deliveryZip}"/>
     <br/>
 
-    <h3>Here's how I'll pay...</h3>
-    <label for="ccNumber">Credit Card #: </label>
+    <h3 style = "font-family: Arial">Here's how I'll pay...</h3>
+    <label for="ccNumber", style = "font-family: Arial">Credit Card #: </label>
     <input type="text" th:field="*{ccNumber}"/>
     <br/>
 
-    <label for="ccExpiration">Expiration: </label>
+    <label for="ccExpiration", style = "font-family: Arial">Expiration: </label>
     <input type="text" th:field="*{ccExpiration}"/>
     <br/>
 
-    <label for="ccCVV">CVV: </label>
+    <label for="ccCVV", style = "font-family: Arial">CVV: </label>
     <input type="text" th:field="*{ccCVV}"/>
     <br/>
 
