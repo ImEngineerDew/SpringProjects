@@ -27,7 +27,7 @@
             </div>
 
             <div class="ingredient-group" id="proteins">
-                <h3>Pick your protein:</h3>
+                <h3 style = "font-family: Arial">Pick your protein:</h3>
                 <div th:each="ingredient : ${protein}">
                     <input th:field="*{ingredients}" type="checkbox"
                            th:value="${ingredient.id}"/>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="ingredient-group" id="cheeses">
-                <h3>Choose your cheese:</h3>
+                <h3 style = "font-family: Arial">Choose your cheese:</h3>
                 <div th:each="ingredient : ${cheese}">
                     <input th:field="*{ingredients}" type="checkbox"
                            th:value="${ingredient.id}"/>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="ingredient-group" id="veggies">
-                <h3>Determine your veggies:</h3>
+                <h3 style = "font-family: Arial">Determine your veggies:</h3>
                 <div th:each="ingredient : ${veggies}">
                     <input th:field="*{ingredients}" type="checkbox"
                            th:value="${ingredient.id}"/>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="ingredient-group" id="sauces">
-                <h3>Select your sauce:</h3>
+                <h3 style = "font-family: Arial">Select your sauce:</h3>
                 <div th:each="ingredient : ${sauce}">
                     <input th:field="*{ingredients}" type="checkbox"
                            th:value="${ingredient.id}"/>
@@ -65,7 +65,7 @@
     </form>
     <div>
     <center>
-        <h3>Name your taco creation:</h3>
+        <h3 style = "font-family: Arial">Name your taco creation:</h3>
         <input type="text" th:field="*{name}"/>
         <br/>
         <button>Submit Your Taco</button>
