@@ -11,14 +11,14 @@
 </head>
 <body>
 <div class ="title">
-    <h1 style = "font-family: Arial; text-align: center; font-size: xx-;">¡Diseñe su propio taco!</h1>
+    <h1 style = "font-family: Arial; text-align: center">¡Diseñe su propio taco!</h1>
     <center>
         <img th:src="@{/images/taco.png}", height="320" width="480"/>
     </center>
     <form method="POST" th:object="${taco}">
         <div class="grid">
             <div class="ingredient-group" id="wraps">
-                <h3>Designate your wrap:</h3>
+                <h3 style = "font-family: Arial">Designate your wrap:</h3>
                 <div th:each="ingredient : ${wrap}">
                     <input th:field="*{ingredients}" type="checkbox"
                            th:value="${ingredient.id}"/>
