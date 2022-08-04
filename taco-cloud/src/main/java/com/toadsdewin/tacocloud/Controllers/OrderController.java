@@ -14,14 +14,14 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping("/orderForm")
+@RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController
 {
     @GetMapping("/current")
     public String OrderForm()
     {
-        return "orderForm";
+        return "orders";
     }
 
     @PostMapping
@@ -29,7 +29,7 @@ public class OrderController
     {
         if(errors.hasErrors())
         {
-            return "orderForm";
+            return "orders";
         }
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
