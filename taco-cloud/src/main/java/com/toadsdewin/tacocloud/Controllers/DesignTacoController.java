@@ -71,12 +71,12 @@ public class DesignTacoController {
     public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder)
     {
         if (errors.hasErrors()) {
-            return "designYourTaco";
+            return "design";
         }
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
 
-        return "redirect:/orders/current";
+        return "redirect:/orderForm/current";
     }
 }
 

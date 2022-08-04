@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<form method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
+<form method="POST" th:action="@{/orderForm}" th:object="${tacoOrder}">
     <h1 style = "font-family: Arial">Order your taco creations!</h1>
         <center>
             <img th:src="@{/images/taco.png}", height="320" width="480"/>
@@ -52,9 +52,6 @@
     <label for="ccExpiration", style = "font-family: Arial">Expiration: </label>
     <input type="text" th:field="*{ccExpiration}"/>
     <input type="text" th:field="*{ccNumber}"/>
-    <span class="validationError"
-          th:if="${#fields.hasErrors('ccNumber')}"
-          th:errors="*{ccNumber}">CC Num Error</span>
     <br/>
 
     <label for="ccCVV", style = "font-family: Arial">CVV: </label>

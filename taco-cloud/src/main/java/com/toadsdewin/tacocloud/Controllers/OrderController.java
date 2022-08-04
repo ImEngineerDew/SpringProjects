@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/orderForm")
 @SessionAttributes("tacoOrder")
 public class OrderController
 {
