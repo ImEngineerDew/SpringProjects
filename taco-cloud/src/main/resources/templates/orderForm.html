@@ -51,6 +51,10 @@
 
     <label for="ccExpiration", style = "font-family: Arial">Expiration: </label>
     <input type="text" th:field="*{ccExpiration}"/>
+    <input type="text" th:field="*{ccNumber}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ccNumber')}"
+          th:errors="*{ccNumber}">CC Num Error</span>
     <br/>
 
     <label for="ccCVV", style = "font-family: Arial">CVV: </label>
