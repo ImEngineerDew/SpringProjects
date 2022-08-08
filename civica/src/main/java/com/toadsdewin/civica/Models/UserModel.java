@@ -17,6 +17,10 @@ public class UserModel implements Serializable {
     public String picture;
 
     /**** Getters ****/
+    public Long getID()
+    {
+        return id;
+    }
     public String getGender() {
         return gender;
     }
