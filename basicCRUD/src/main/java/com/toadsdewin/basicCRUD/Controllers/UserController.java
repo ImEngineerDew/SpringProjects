@@ -2,12 +2,13 @@ package com.toadsdewin.basicCRUD.Controllers;
 import com.toadsdewin.basicCRUD.Models.UserModel;
 import com.toadsdewin.basicCRUD.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping(path = "/demo")
 public class UserController {
     @Autowired
