@@ -18,22 +18,26 @@ public class UserController
     {
         return this.userService.saveUser(user);
     }
+    /**This linecode extract all the users recorder on this DB**/
     @GetMapping (path = "/all")
     public ArrayList<UserModel>getAllUsers()
     {
         return userService.getUsers();
     }
+    /**This linecode can find the user by id**/
     @GetMapping(path= "/{id}")
     public Optional<UserModel> getUserById(@PathVariable("id") Long id)
     {
         return this.userService.getById(id);
     }
+    /**This linecode can find the user by rol**/
     @GetMapping(path= "/query")
     public ArrayList<UserModel>getRol(@RequestParam("rol") String rol)
     {
         return this.userService.getByRol(rol);
     }
 
+    /**This linecode might delete the user by id**/
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
     {
