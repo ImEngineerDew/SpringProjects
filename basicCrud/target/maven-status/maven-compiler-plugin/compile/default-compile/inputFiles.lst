@@ -1,2 +1,5 @@
 C:\Users\User\Documents\Developer\practicas\GitFolder\Spring projects\basicCrud\src\main\java\com\toadsdewin\basicCrud\BasicCrudApplication.java
 C:\Users\User\Documents\Developer\practicas\GitFolder\Spring projects\basicCrud\src\main\java\com\toadsdewin\basicCrud\Models\UserModel.java
+C:\Users\User\Documents\Developer\practicas\GitFolder\Spring projects\basicCrud\src\main\java\com\toadsdewin\basicCrud\Repository\UserRepository.java
+C:\Users\User\Documents\Developer\practicas\GitFolder\Spring projects\basicCrud\src\main\java\com\toadsdewin\basicCrud\Services\UserService.java
+C:\Users\User\Documents\Developer\practicas\GitFolder\Spring projects\basicCrud\src\main\java\com\toadsdewin\basicCrud\Controllers\UserController.java

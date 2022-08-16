@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
-@Controller
+@RestController
 @RequestMapping(path = "/test")
 public class UserController
 {
