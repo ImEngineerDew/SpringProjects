@@ -1,15 +1,13 @@
 package com.toadsdewin.basicCrud.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (unique = true, nullable = false)
     public Long id;
     private String name;
     private String surname;
