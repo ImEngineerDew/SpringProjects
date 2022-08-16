@@ -13,6 +13,7 @@ public class UserModel {
     private String name;
     private String surname;
     private String email;
+    private String rol;
 
 
     /***  Getters   ***/
@@ -28,6 +29,7 @@ public class UserModel {
     {
         return surname;
     }
+    public String getRol(){return rol;}
     public String getEmail()
     {
         return email;
@@ -43,6 +45,7 @@ public class UserModel {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+    public void setRol(String rol){this.rol = rol;}
     public void setEmail(String email) {
         this.email = email;
     }

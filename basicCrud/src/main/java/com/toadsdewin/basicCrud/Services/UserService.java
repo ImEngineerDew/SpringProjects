@@ -25,6 +25,10 @@ public class UserService {
     {
         return userRepository.findById(id);
     }
+    public ArrayList<UserModel>getByRol(String rol)
+    {
+        return userRepository.findByRol(rol);
+    }
     public boolean deleteUser(Long id)
     {
         try {

@@ -28,6 +28,11 @@ public class UserController
     {
         return this.userService.getById(id);
     }
+    @GetMapping(path= "/query")
+    public ArrayList<UserModel>getRol(@RequestParam("rol") String rol)
+    {
+        return this.userService.getByRol(rol);
+    }
 
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
