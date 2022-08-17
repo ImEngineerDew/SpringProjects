@@ -30,9 +30,15 @@ public class UserService {
     {
         return userRepository.findByRol(rol);
     }
-    public ArrayList<UserModel>getByCareer(String career)
-    {
-        return userRepository.findByCareer(career);
+
+    public ArrayList<UserModel>getCareer(String career) throws Exception {
+        try{
+            ArrayList<UserModel> car = userRepository.findByCareer(career);
+            return car;
+        }catch(Exception error)
+        {
+            throw new Exception(error.getMessage());
+        }
     }
     public boolean deleteUser(Long id)
     {
