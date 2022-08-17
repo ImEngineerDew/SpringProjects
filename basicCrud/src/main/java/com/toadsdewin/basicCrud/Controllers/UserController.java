@@ -2,8 +2,6 @@ package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -44,15 +42,6 @@ public class UserController
     {
         return this.userService.getByRol(rol);
     }
-    /*** @GetMapping(path = "/query")
-    public ResponseEntity<?> getByCareer(@RequestParam String career){
-        try
-        {
-            return ResponseEntity.status(HttpStatus.OK).body(userService.getCareer(career));
-        }catch(Exception error){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \""+ error.getMessage()+"\"}"));
-        }
-    }***/
     /**This linecode might delete the user by id**/
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
