@@ -33,14 +33,18 @@ public class UserController
     {
         return this.userService.getById(id);
     }
-    /**This linecode can find the user by rol**/
-    @GetMapping(path= "/rol/{rol}")
-    public ArrayList<UserModel>getRol(@PathVariable("rol") String rol)
+    /**This linecode can find the user by career **/
+    @RequestMapping(value ="/query",params = "career")
+    public ArrayList<UserModel>getCareer(@RequestParam String career)
+    {
+        return this.userService.getByCareer(career);
+    }
+    @RequestMapping(value="/query", params = "rol")
+    public ArrayList<UserModel>getRol(@RequestParam String rol)
     {
         return this.userService.getByRol(rol);
     }
-    /**This linecode can find the user by career **/
-    @GetMapping(path = "/query")
+    /*** @GetMapping(path = "/query")
     public ResponseEntity<?> getByCareer(@RequestParam String career){
         try
         {
@@ -48,7 +52,7 @@ public class UserController
         }catch(Exception error){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \""+ error.getMessage()+"\"}"));
         }
-    }
+    }***/
     /**This linecode might delete the user by id**/
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
