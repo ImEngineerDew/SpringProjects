@@ -5,6 +5,7 @@ import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -28,6 +29,10 @@ public class UserService {
     public ArrayList<UserModel>getByRol(String rol)
     {
         return userRepository.findByRol(rol);
+    }
+    public ArrayList<UserModel>getByCareer(String career)
+    {
+        return userRepository.findByCareer(career);
     }
     public boolean deleteUser(Long id)
     {

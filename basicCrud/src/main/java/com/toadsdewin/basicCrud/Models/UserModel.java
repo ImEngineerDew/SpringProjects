@@ -14,6 +14,7 @@ public class UserModel {
     private String surname;
     private String email;
     private String rol;
+    private String career;
 
 
     /***  Getters   ***/
@@ -34,6 +35,10 @@ public class UserModel {
     {
         return email;
     }
+    public String getCareer()
+    {
+        return career;
+    }
 
     /*** Setters ***/
     public void setId(Long id) {
@@ -48,5 +53,9 @@ public class UserModel {
     public void setRol(String rol){this.rol = rol;}
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
     }
 }

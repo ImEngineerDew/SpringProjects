@@ -36,7 +36,6 @@ public class UserController
     {
         return this.userService.getByRol(rol);
     }
-
     /**This linecode might delete the user by id**/
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
@@ -51,23 +50,4 @@ public class UserController
             return "The user hasn't been eliminated with the previous id: "+id;
         }
     }
-    /**
-    public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String surname)
-    {
-        UserModel newUser = new UserModel();
-        newUser.setName(name);
-        newUser.setSurname(surname);
-        newUser.setEmail(email);
-
-        userRepository.save(newUser);
-
-        return "The user has been saved";
-    }
-
-    @GetMapping(path = "/all")
-    public @ResponseBody Iterable<UserModel>getAllUsers()
-    {
-        return userRepository.findAll();
-    }
-    **/
 }
