@@ -16,6 +16,17 @@ public class UserModel {
     private String rol;
     private String career;
 
+    public UserModel() {}
+
+    public UserModel(Long id, String name, String surname, String email, String rol, String career)
+    {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.rol = rol;
+        this.career = career;
+    }
 
     /***  Getters   ***/
     public Long getId()

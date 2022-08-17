@@ -16,6 +16,7 @@ public class UserController
     @PostMapping(path = "/add")
     public UserModel saveUser(@RequestBody UserModel user)
     {
+        /**user = new UserModel(2L,"Laura","Lozano","lozano.orjuela@gmail.com","HR", "Administration");**/
         return this.userService.saveUser(user);
     }
     /**This linecode extract all the users recorder on this DB**/
