@@ -3,7 +3,7 @@ package com.toadsdewin.basicCrud.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "test")
+@Table(name = "users")
 public class UserModel {
 
     @Id
