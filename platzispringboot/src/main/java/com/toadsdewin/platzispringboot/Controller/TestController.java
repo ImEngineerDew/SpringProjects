@@ -13,6 +13,6 @@ public class TestController
     @ResponseBody
     public ResponseEntity<String>function()
     {
-        return new ResponseEntity<>("Hello from controller ", HttpStatus.OK);
+        return new ResponseEntity<>("Hello from controller desde el controllador ", HttpStatus.OK);
     }
 }
