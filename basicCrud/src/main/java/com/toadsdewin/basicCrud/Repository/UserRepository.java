@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<UserModel,Long> {
     public ArrayList<UserModel> findByRol(String rol);
-    public ArrayList<UserModel> findByCareer(@Param("career")String career);
+    public ArrayList<UserModel> findByCareer(String career);
     public Optional<UserModel> findById(Long id);
     public UserModel save(UserModel user);
 }
