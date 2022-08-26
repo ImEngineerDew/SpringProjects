@@ -9,8 +9,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Service
 public interface UserService {
+
+
     public ArrayList<UserModel>getUsers();
     public UserModel saveUser(UserModel user);
     public Optional<UserModel> getById(Long id);
