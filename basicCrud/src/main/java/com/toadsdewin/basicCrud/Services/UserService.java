@@ -10,39 +10,12 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
-public class UserService {
-    @Autowired
-    UserRepository userRepository;
+public interface UserService {
+    public ArrayList<UserModel>getUsers();
+    public UserModel saveUser(UserModel user);
+    public Optional<UserModel> getById(Long id);
+    public ArrayList<UserModel>getByRol(String rol);
+    public ArrayList<UserModel>getByCareer(String career);
+    public boolean deleteUser(Long id);
 
-    public ArrayList<UserModel> getUsers()
-    {
-        return (ArrayList<UserModel>)userRepository.findAll();
-    }
-    public UserModel saveUser(UserModel user)
-    {
-        return userRepository.save(user);
-    }
-    public Optional<UserModel> getById(Long id)
-    {
-        return userRepository.findById(id);
-    }
-    public ArrayList<UserModel>getByRol(String rol)
-    {
-        return userRepository.findByRol(rol);
-    }
-    public ArrayList<UserModel>getByCareer(String career)
-    {
-        return userRepository.findByCareer(career);
-    }
-    public boolean deleteUser(Long id)
-    {
-        try {
-            userRepository.deleteById(id);
-            return true;
-
-        }catch(Exception error)
-        {
-            return false;
-        }
-    }
 }
