@@ -2,6 +2,7 @@ package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -12,7 +13,11 @@ public class UserController implements UserControllerInterface
 {
     @Autowired
     UserServiceInterface userServiceInterface;
-
+    @GetMapping("/message")
+    public ResponseEntity<Object>messageMethod()
+    {
+        return ResponseEntity.ok("Prueba superada");
+    }
     @Override
     public UserModel saveUser(UserModel user) {
         return this.userServiceInterface.saveUser(user);
