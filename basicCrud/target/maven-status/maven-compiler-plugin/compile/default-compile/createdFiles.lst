@@ -1,4 +1,5 @@
+com\toadsdewin\basicCrud\Services\UserServiceInterface.class
+com\toadsdewin\basicCrud\Controllers\UserControllerInterface.class
 com\toadsdewin\basicCrud\Models\UserModel.class
-com\toadsdewin\basicCrud\Services\UserServiceImp.class
 com\toadsdewin\basicCrud\Services\UserService.class
 com\toadsdewin\basicCrud\BasicCrudApplication.class

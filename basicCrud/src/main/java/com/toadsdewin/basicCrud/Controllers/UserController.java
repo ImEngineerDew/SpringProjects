@@ -1,6 +1,6 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
-import com.toadsdewin.basicCrud.Services.UserService;
+import com.toadsdewin.basicCrud.Services.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -8,45 +8,45 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/test")
-public class UserController
+public class UserController implements UserControllerInterface
 {
     @Autowired
-    UserService userService;
+    UserServiceInterface userServiceInterface;
 
     @PostMapping(path = "/add")
     public UserModel saveUser(@RequestBody UserModel user)
     {
-        /**user = new UserModel(2L,"Laura","Lozano","lozano.orjuela@gmail.com","HR", "Administration");**/
-        return this.userService.saveUser(user);
+        /*user = new UserModel(2L,"Laura","Lozano","lozano.orjuela@gmail.com","HR", "Administration");*/
+        return this.userServiceInterface.saveUser(user);
     }
-    /**This linecode extract all the users recorder on this DB**/
+    /*This linecode extract all the users recorder on this DB*/
     @GetMapping (path = "/all")
     public ArrayList<UserModel>getAllUsers()
     {
-        return userService.getUsers();
+        return userServiceInterface.getUsers();
     }
     /**This linecode can find the user by id**/
     @GetMapping(path= "/{id}")
     public Optional<UserModel> getUserById(@PathVariable("id") Long id)
     {
-        return this.userService.getById(id);
+        return this.userServiceInterface.getById(id);
     }
     /**This linecode can find the user by career **/
     @RequestMapping(value ="/query",params = "career")
     public ArrayList<UserModel>getCareer(@RequestParam String career)
     {
-        return this.userService.getByCareer(career);
+        return this.userServiceInterface.getByCareer(career);
     }
     @RequestMapping(value="/query", params = "rol")
     public ArrayList<UserModel>getRol(@RequestParam String rol)
     {
-        return this.userService.getByRol(rol);
+        return this.userServiceInterface.getByRol(rol);
     }
-    /**This linecode might delete the user by id**/
+    /*This linecode might delete the user by id*/
     @DeleteMapping(path="/{id}")
     public String deleteById(@PathVariable("id")Long id)
     {
-        boolean ok = this.userService.deleteUser(id);
+        boolean ok = this.userServiceInterface.deleteUser(id);
 
         if(ok)
         {

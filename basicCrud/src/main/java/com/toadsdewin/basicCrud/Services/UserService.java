@@ -5,18 +5,54 @@ import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
+@Service
+public class UserService implements UserServiceInterface
+{
+    @Autowired
+    UserRepository userRepository;
+    @Override
+    public ArrayList<UserModel> getUsers() {
+        return (ArrayList<UserModel>) userRepository.findAll();
+    }
 
-public interface UserService {
+    @Override
+    public UserModel saveUser(UserModel user)
+    {
+        if(user.getId() == null)
+        {
+            return userRepository.save(user);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    @Override
+    public Optional<UserModel> getById(Long id) {
+        return userRepository.findById(id);
+    }
 
+    @Override
+    public ArrayList<UserModel> getByRol(String rol) {
+        return userRepository.findByRol(rol);
+    }
 
-    public ArrayList<UserModel>getUsers();
-    public UserModel saveUser(UserModel user);
-    public Optional<UserModel> getById(Long id);
-    public ArrayList<UserModel>getByRol(String rol);
-    public ArrayList<UserModel>getByCareer(String career);
-    public boolean deleteUser(Long id);
+    @Override
+    public ArrayList<UserModel> getByCareer(String career) {
+        return userRepository.findByCareer(career);
+    }
 
+    @Override
+    public boolean deleteUser(Long id) {
+        try
+        {
+            userRepository.deleteById(id);
+            return true;
+        }catch(Exception error)
+        {
+            return false;
+        }
+    }
 }
