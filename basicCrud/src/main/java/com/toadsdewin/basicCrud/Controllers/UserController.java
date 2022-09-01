@@ -33,7 +33,8 @@ public class UserController implements UserControllerInterface
     public Optional<UserModel> getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
-    @DeleteMapping(path = "/{id}")
+
+    @Override
     public String deleteById(Long id)
     {
        boolean ok = this.userServiceInterface.deleteUser(id);

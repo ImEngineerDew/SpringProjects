@@ -17,4 +17,7 @@ public interface UserControllerInterface
     public ArrayList<UserModel> getRol(@RequestParam String rol);
     @GetMapping(path = "/{id}")
     public Optional<UserModel> getUserById(@PathVariable ("id")Long id);
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteById (@PathVariable("id")Long id);
 }
