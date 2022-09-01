@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
 public interface UserControllerInterface
 {
     @PostMapping(path = "/add")
@@ -17,7 +16,6 @@ public interface UserControllerInterface
     public ArrayList<UserModel> getRol(@RequestParam String rol);
     @GetMapping(path = "/{id}")
     public Optional<UserModel> getUserById(@PathVariable ("id")Long id);
-
     @DeleteMapping(path = "/{id}")
     public String deleteById (@PathVariable("id")Long id);
 }

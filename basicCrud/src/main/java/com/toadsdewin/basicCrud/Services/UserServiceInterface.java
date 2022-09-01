@@ -11,5 +11,4 @@ public interface UserServiceInterface {
     public ArrayList<UserModel>getByRol(String rol);
     public ArrayList<UserModel>getByCareer(String career);
     public boolean deleteUser(Long id);
-
 }

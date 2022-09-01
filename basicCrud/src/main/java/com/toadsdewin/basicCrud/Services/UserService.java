@@ -16,7 +16,6 @@ public class UserService implements UserServiceInterface
     public ArrayList<UserModel> getUsers() {
         return (ArrayList<UserModel>) userRepository.findAll();
     }
-
     @Override
     public UserModel saveUser(UserModel user)
     {
