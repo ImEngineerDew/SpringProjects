@@ -21,6 +21,7 @@ public class UserController implements UserControllerInterface
     public ArrayList<UserModel> getAllUsers() {
         return this.userServiceInterface.getUsers();
     }
+    /*This linecode can find the user by career */
     @Override
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
@@ -29,11 +30,12 @@ public class UserController implements UserControllerInterface
     public ArrayList<UserModel> getRol(String rol) {
         return this.userServiceInterface.getByRol(rol);
     }
+    /*This linecode can find the user by id*/
     @Override
     public Optional<UserModel> getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
-
+    /*This linecode might delete the user by id*/
     @Override
     public String deleteById(Long id)
     {
