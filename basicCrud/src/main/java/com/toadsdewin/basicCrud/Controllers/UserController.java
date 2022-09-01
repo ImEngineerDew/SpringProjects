@@ -13,41 +13,30 @@ public class UserController implements UserControllerInterface
     @Autowired
     UserServiceInterface userServiceInterface;
 
-    @PostMapping(path = "/add")
-    public UserModel saveUser(@RequestBody UserModel user)
-    {
-        /*user = new UserModel(2L,"Laura","Lozano","lozano.orjuela@gmail.com","HR", "Administration");*/
+    @Override
+    public UserModel saveUser(UserModel user) {
         return this.userServiceInterface.saveUser(user);
     }
-    /*This linecode extract all the users recorder on this DB*/
-    @GetMapping (path = "/all")
-    public ArrayList<UserModel>getAllUsers()
-    {
-        return userServiceInterface.getUsers();
+    @Override
+    public ArrayList<UserModel> getAllUsers() {
+        return this.userServiceInterface.getUsers();
     }
-    /**This linecode can find the user by id**/
-    @GetMapping(path= "/{id}")
-    public Optional<UserModel> getUserById(@PathVariable("id") Long id)
-    {
-        return this.userServiceInterface.getById(id);
-    }
-    /**This linecode can find the user by career **/
-    @RequestMapping(value ="/query",params = "career")
-    public ArrayList<UserModel>getCareer(@RequestParam String career)
-    {
+    @Override
+    public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
-    @RequestMapping(value="/query", params = "rol")
-    public ArrayList<UserModel>getRol(@RequestParam String rol)
-    {
+    @Override
+    public ArrayList<UserModel> getRol(String rol) {
         return this.userServiceInterface.getByRol(rol);
     }
-    /*This linecode might delete the user by id*/
-    @DeleteMapping(path="/{id}")
-    public String deleteById(@PathVariable("id")Long id)
+    @Override
+    public Optional<UserModel> getUserById(Long id) {
+        return this.userServiceInterface.getById(id);
+    }
+    @DeleteMapping(path = "/{id}")
+    public String deleteById(Long id)
     {
-        boolean ok = this.userServiceInterface.deleteUser(id);
-
+       boolean ok = this.userServiceInterface.deleteUser(id);
         if(ok)
         {
             return "The user has been eliminated with the previous id: "+id;
