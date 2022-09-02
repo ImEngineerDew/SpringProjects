@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface UserRepository extends CrudRepository<UserModel,Long> {
     public ArrayList<UserModel> findByRol(String rol);
     public ArrayList<UserModel> findByCareer(String career);
+    public ArrayList<UserModel> findByCountry(String country);
 }

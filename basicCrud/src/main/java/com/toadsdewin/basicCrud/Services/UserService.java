@@ -39,6 +39,9 @@ public class UserService implements UserServiceInterface
     }
 
     @Override
+    public ArrayList<UserModel>getByCountry(String country) {return userRepository.findByCountry(country);}
+
+    @Override
     public ArrayList<UserModel> getByCareer(String career) {
         return userRepository.findByCareer(career);
     }

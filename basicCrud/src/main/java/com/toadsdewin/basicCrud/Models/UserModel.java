@@ -12,17 +12,19 @@ public class UserModel {
     public Long id;
     private String name;
     private String surname;
+    private String countryOfOrigin;
     private String email;
     private String rol;
     private String career;
 
     public UserModel() {}
 
-    public UserModel(Long id, String name, String surname, String email, String rol, String career)
+    public UserModel(Long id, String name, String surname,String countryOfOrigin, String email, String rol, String career)
     {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.countryOfOrigin = countryOfOrigin;
         this.email = email;
         this.rol = rol;
         this.career = career;
@@ -41,6 +43,7 @@ public class UserModel {
     {
         return surname;
     }
+    public String getCountryOfOrigin(){ return countryOfOrigin;}
     public String getRol(){return rol;}
     public String getEmail()
     {
@@ -61,6 +64,7 @@ public class UserModel {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+    public void setCountryOfOrigin(String countryOfOrigin) {this.countryOfOrigin = countryOfOrigin;}
     public void setRol(String rol){this.rol = rol;}
     public void setEmail(String email) {
         this.email = email;

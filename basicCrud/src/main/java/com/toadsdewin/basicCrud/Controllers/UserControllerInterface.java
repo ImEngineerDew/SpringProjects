@@ -14,6 +14,8 @@ public interface UserControllerInterface
     public ArrayList<UserModel> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")
     public ArrayList<UserModel> getRol(@RequestParam String rol);
+    @RequestMapping(value = "/query",params = "country")
+    public ArrayList<UserModel>getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")
     public Optional<UserModel> getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")
