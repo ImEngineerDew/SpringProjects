@@ -1,5 +1,7 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
+import org.apache.catalina.User;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ public interface UserControllerInterface
     @PostMapping(path = "/add")
     public UserModel saveUser(@RequestBody UserModel user);
     @GetMapping(path = "/all")
-    public ArrayList<UserModel> getAllUsers();
+    public ResponseEntity<ArrayList<UserModel>> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
     public ArrayList<UserModel> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")

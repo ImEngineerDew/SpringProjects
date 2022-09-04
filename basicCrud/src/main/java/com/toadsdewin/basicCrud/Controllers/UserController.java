@@ -2,6 +2,7 @@ package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -23,8 +24,17 @@ public class UserController implements UserControllerInterface
         return this.userServiceInterface.saveUser(user);
     }
     @Override
-    public ArrayList<UserModel> getAllUsers() {
-        return this.userServiceInterface.getUsers();
+    public ResponseEntity<ArrayList<UserModel>>getAllUsers()
+    {
+        ArrayList<UserModel> allUsers = null;
+        try {
+            allUsers = this.userServiceInterface.getUsers();
+        }catch (Exception error)
+        {
+            error.getMessage();
+        }
+        return new ResponseEntity<ArrayList<UserModel>>(allUsers, HttpStatus.OK);
+        //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
     @Override
