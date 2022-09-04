@@ -20,8 +20,17 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.ok("Prueba superada");
     }
     @Override
-    public UserModel saveUser(UserModel user) {
-        return this.userServiceInterface.saveUser(user);
+    public ResponseEntity<UserModel> saveUser(UserModel user)
+    {
+        UserModel userSaved = null;
+        try {
+            userSaved = this.userServiceInterface.saveUser(user);
+        }catch(Exception error)
+        {
+            error.getMessage();
+        }
+        return new ResponseEntity<UserModel>(userSaved,HttpStatus.OK);
+        //return this.userServiceInterface.saveUser(user);
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()

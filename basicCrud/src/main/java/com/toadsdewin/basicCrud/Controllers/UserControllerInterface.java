@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserControllerInterface
 {
     @PostMapping(path = "/add")
-    public UserModel saveUser(@RequestBody UserModel user);
+    public ResponseEntity<UserModel> saveUser(@RequestBody UserModel user);
     @GetMapping(path = "/all")
     public ResponseEntity<ArrayList<UserModel>> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
