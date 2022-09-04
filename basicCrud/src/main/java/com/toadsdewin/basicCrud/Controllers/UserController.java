@@ -1,6 +1,7 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,16 @@ public class UserController implements UserControllerInterface
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
-    public ArrayList<UserModel> getCountry(String country) {return this.userServiceInterface.getByCountry(country);}
+    public ResponseEntity<ArrayList<UserModel>> getCountry(String country) {
+        ArrayList<UserModel> nameCountry = null;
+        try {
+            nameCountry = this.userServiceInterface.getByCountry(country);
+        } catch(Exception error)
+        {
+            error.getMessage();
+        }
+      return new ResponseEntity<>(nameCountry,HttpStatus.OK);
+    }
     @Override
     public ArrayList<UserModel> getRol(String rol) {
         return this.userServiceInterface.getByRol(rol);
