@@ -20,7 +20,7 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.ok("Prueba superada");
     }
     @Override
-    public ResponseEntity<UserModel> saveUser(UserModel user)
+    public ResponseEntity<UserModel> saveUser(UserModel user) /*A Response entity is a polite path for getting an answer*/
     {
         UserModel userSaved = null;
         try {
@@ -29,7 +29,7 @@ public class UserController implements UserControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<UserModel>(userSaved,HttpStatus.OK);
+        return new ResponseEntity<>(userSaved,HttpStatus.OK);
         //return this.userServiceInterface.saveUser(user);
     }
     @Override
@@ -42,7 +42,7 @@ public class UserController implements UserControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<ArrayList<UserModel>>(allUsers, HttpStatus.OK);
+        return new ResponseEntity<>(allUsers, HttpStatus.OK);
         //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
