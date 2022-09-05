@@ -1,7 +1,5 @@
 package com.toadsdewin.basicCrud.Services;
 import com.toadsdewin.basicCrud.Models.UserModel;
-import org.apache.catalina.User;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
