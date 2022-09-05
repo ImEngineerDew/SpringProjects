@@ -25,26 +25,21 @@ public class UserController implements UserControllerInterface
         UserModel userSaved = null;
         try {
             userSaved = this.userServiceInterface.saveUser(user);
-        }catch(Exception error)
+        }
+        catch(Exception error)
         {
             error.getMessage();
         }
-        if(userSaved!=null)
-        {
-            return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+        return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
         }
-        else {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        //return this.userServiceInterface.saveUser(user);
-    }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
     {
         ArrayList<UserModel> allUsers = null;
         try {
             allUsers = this.userServiceInterface.getUsers();
-        }catch (Exception error)
+        }
+        catch (Exception error)
         {
             error.getMessage();
         }
@@ -60,7 +55,8 @@ public class UserController implements UserControllerInterface
         ArrayList<UserModel> nameCountry = null;
         try {
             nameCountry = this.userServiceInterface.getByCountry(country);
-        } catch(Exception error)
+        }
+        catch(Exception error)
         {
             error.getMessage();
         }
