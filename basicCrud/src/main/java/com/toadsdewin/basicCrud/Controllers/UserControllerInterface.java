@@ -1,6 +1,6 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
-import org.apache.catalina.User;
+import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserControllerInterface
 {
     @PostMapping(path = "/add")
-    public ResponseEntity<UserModel> saveUser(@RequestBody UserModel user);
+    public ResponseEntity<UserModel> saveUser(@Valid @RequestBody UserModel user);
     @GetMapping(path = "/all")
     public ResponseEntity<ArrayList<UserModel>> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
