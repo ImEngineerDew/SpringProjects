@@ -21,5 +21,5 @@ public interface UserControllerInterface
     @GetMapping(path = "/{id}")
     public Optional<UserModel> getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")
-    public String deleteById (@PathVariable("id")Long id);
+    public ResponseEntity<String> deleteById (@PathVariable("id")Long id);
 }

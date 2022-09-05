@@ -78,15 +78,15 @@ public class UserController implements UserControllerInterface
     }
     /*This linecode might delete the user by id*/
     @Override
-    public String deleteById(Long id)
+    public ResponseEntity<String> deleteById(Long id)
     {
        boolean ok = this.userServiceInterface.deleteUser(id);
         if(ok)
         {
-            return "The user has been eliminated with the previous id: "+id;
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.NO_CONTENT);
         }
         else{
-            return "The user hasn't been eliminated with the previous id: "+id;
+            return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
         }
     }
 }
