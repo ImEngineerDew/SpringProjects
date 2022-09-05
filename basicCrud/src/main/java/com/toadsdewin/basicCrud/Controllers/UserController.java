@@ -30,7 +30,13 @@ public class UserController implements UserControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<>(userSaved,HttpStatus.OK);
+        if(userSaved!=null)
+        {
+            return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
         //return this.userServiceInterface.saveUser(user);
     }
     @Override
@@ -43,7 +49,7 @@ public class UserController implements UserControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<>(allUsers, HttpStatus.OK);
+            return new ResponseEntity<>(allUsers,HttpStatus.OK);
         //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
