@@ -1,7 +1,6 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/test")
+@RequestMapping(path = "/basicCRUD")
 public class UserController implements UserControllerInterface
 {
     @Autowired
@@ -49,7 +48,7 @@ public class UserController implements UserControllerInterface
         {
             error.getMessage();
         }
-            return new ResponseEntity<>(allUsers,HttpStatus.OK);
+            return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
         //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
@@ -83,7 +82,7 @@ public class UserController implements UserControllerInterface
        boolean ok = this.userServiceInterface.deleteUser(id);
         if(ok)
         {
-            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
         }
         else{
             return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
