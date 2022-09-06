@@ -1,13 +1,11 @@
 package com.toadsdewin.basicCrud.Services;
-
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
-@Service
+
 public class UserService implements UserServiceInterface
 {
     @Autowired

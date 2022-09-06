@@ -1,8 +1,10 @@
 package com.toadsdewin.basicCrud.Services;
 import com.toadsdewin.basicCrud.Models.UserModel;
+import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Service
 public interface UserServiceInterface {
     public ArrayList<UserModel>getUsers();
     public UserModel saveUser(UserModel user);

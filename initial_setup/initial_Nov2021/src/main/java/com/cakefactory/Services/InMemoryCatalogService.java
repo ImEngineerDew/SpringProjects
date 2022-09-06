@@ -1,7 +1,5 @@
 package com.cakefactory.Services;
-
-import com.cakefactory.Item;
-
+import com.cakefactory.Models.Item;
 import java.math.BigDecimal;
 import java.util.Arrays;
 

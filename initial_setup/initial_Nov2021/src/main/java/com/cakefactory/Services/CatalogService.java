@@ -1,9 +1,9 @@
 package com.cakefactory.Services;
-import com.cakefactory.Item;
+import com.cakefactory.Models.Item;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface CatalogService
 {
-    Iterable<Item> getItems();
+    public Iterable<Item> getItems();
 }
