@@ -1,8 +1,11 @@
 package com.cakefactory.Services;
 import com.cakefactory.Models.Item;
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 
+@Component
 public class InMemoryCatalogService implements CatalogService{
     @Override
     public Iterable<Item> getItems() {
