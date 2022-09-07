@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/basicCRUD")
+@RequestMapping(path = "api/basicCRUD")
 public class UserController implements UserControllerInterface
 {
     @Autowired
     UserServiceInterface userServiceInterface;
-    @GetMapping("/message")
-    public ResponseEntity<Object>messageMethod()
+    @GetMapping
+    public ResponseEntity<String>messageMethod()
     {
         return ResponseEntity.ok("Prueba superada");
     }
