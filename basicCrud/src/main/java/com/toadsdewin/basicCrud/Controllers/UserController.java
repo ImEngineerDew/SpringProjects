@@ -19,8 +19,9 @@ public class UserController implements UserControllerInterface
     {
         return ResponseEntity.ok("Prueba superada");
     }
+    /*A Response entity is a polite path for getting an answer*/
     @Override
-    public ResponseEntity<UserModel> saveUser(UserModel user) /*A Response entity is a polite path for getting an answer*/
+    public ResponseEntity<UserModel> saveUser(UserModel user)
     {
         UserModel userSaved = null;
         try {
@@ -44,7 +45,6 @@ public class UserController implements UserControllerInterface
             error.getMessage();
         }
             return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
-        //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
     @Override
@@ -63,7 +63,8 @@ public class UserController implements UserControllerInterface
       return new ResponseEntity<>(nameCountry,HttpStatus.OK);
     }
     @Override
-    public ArrayList<UserModel> getRol(String rol) {
+    public ArrayList<UserModel> getRol(String rol)
+    {
         return this.userServiceInterface.getByRol(rol);
     }
     /*This linecode can find the user by id*/
