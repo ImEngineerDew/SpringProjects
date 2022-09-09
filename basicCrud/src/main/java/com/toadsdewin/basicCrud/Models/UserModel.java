@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class UserModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (unique = true, nullable = false)

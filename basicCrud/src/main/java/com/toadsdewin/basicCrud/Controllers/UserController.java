@@ -9,34 +9,40 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/basicCRUD")
+@RequestMapping(path = "api/basicCRUD")
 public class UserController implements UserControllerInterface
 {
     @Autowired
     UserServiceInterface userServiceInterface;
-    @GetMapping("/message")
-    public ResponseEntity<Object>messageMethod()
+
+    /**GET METHOD**/
+    @GetMapping
+    public ResponseEntity<String>messageMethod()
     {
         return ResponseEntity.ok("Prueba superada");
     }
+    /*A Response entity is a polite path for getting an answer*/
+
+    /**POST METHOD**/
     @Override
-    public ResponseEntity<UserModel> saveUser(UserModel user) /*A Response entity is a polite path for getting an answer*/
+    public ResponseEntity<UserModel> saveUser(UserModel user)
     {
         UserModel userSaved = null;
         try {
             userSaved = this.userServiceInterface.saveUser(user);
-        }catch(Exception error)
+        }
+        catch(Exception error)
         {
             error.getMessage();
         }
-        if(userSaved!=null)
-        {
-            return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
-        }
-        else {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        //return this.userServiceInterface.saveUser(user);
+        return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+    }
+    /**UPGRADE METHOD OR PUT METHOD**/
+    @Override
+    public ResponseEntity<String> upgradeUser(UserModel user, Long id)
+    {
+        this.userServiceInterface.upgradeUser(user);
+        return new ResponseEntity<>("The user has been upgraded", HttpStatus.CREATED);
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
@@ -44,12 +50,12 @@ public class UserController implements UserControllerInterface
         ArrayList<UserModel> allUsers = null;
         try {
             allUsers = this.userServiceInterface.getUsers();
-        }catch (Exception error)
+        }
+        catch (Exception error)
         {
             error.getMessage();
         }
             return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
-        //return this.userServiceInterface.getUsers();
     }
     /*This linecode can find the user by career */
     @Override
@@ -60,14 +66,16 @@ public class UserController implements UserControllerInterface
         ArrayList<UserModel> nameCountry = null;
         try {
             nameCountry = this.userServiceInterface.getByCountry(country);
-        } catch(Exception error)
+        }
+        catch(Exception error)
         {
             error.getMessage();
         }
       return new ResponseEntity<>(nameCountry,HttpStatus.OK);
     }
     @Override
-    public ArrayList<UserModel> getRol(String rol) {
+    public ArrayList<UserModel> getRol(String rol)
+    {
         return this.userServiceInterface.getByRol(rol);
     }
     /*This linecode can find the user by id*/
@@ -82,7 +90,7 @@ public class UserController implements UserControllerInterface
        boolean ok = this.userServiceInterface.deleteUser(id);
         if(ok)
         {
-            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.GONE);
         }
         else{
             return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
