@@ -15,7 +15,7 @@ public class UserController implements UserControllerInterface
     @Autowired
     UserServiceInterface userServiceInterface;
 
-    /*GET METHOD*/
+    /**GET METHOD**/
     @GetMapping
     public ResponseEntity<String>messageMethod()
     {
@@ -23,7 +23,7 @@ public class UserController implements UserControllerInterface
     }
     /*A Response entity is a polite path for getting an answer*/
 
-    /*POST METHOD*/
+    /**POST METHOD**/
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
     {
@@ -37,10 +37,12 @@ public class UserController implements UserControllerInterface
         }
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
+    /**UPGRADE METHOD OR PUT METHOD**/
     @Override
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED)
     public UserModel upgradeUser(UserModel user, Long id)
     {
+       System.out.println("The user has been upgraded");
        return this.userServiceInterface.upgradeUser(user);
     }
     @Override
