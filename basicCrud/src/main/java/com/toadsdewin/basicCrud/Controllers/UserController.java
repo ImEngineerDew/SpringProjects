@@ -39,11 +39,10 @@ public class UserController implements UserControllerInterface
     }
     /**UPGRADE METHOD OR PUT METHOD**/
     @Override
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public UserModel upgradeUser(UserModel user, Long id)
+    public ResponseEntity<String> upgradeUser(UserModel user, Long id)
     {
-       System.out.println("The user has been upgraded");
-       return this.userServiceInterface.upgradeUser(user);
+        this.userServiceInterface.upgradeUser(user);
+        return new ResponseEntity<>("The user has been upgraded", HttpStatus.CREATED);
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
@@ -91,7 +90,7 @@ public class UserController implements UserControllerInterface
        boolean ok = this.userServiceInterface.deleteUser(id);
         if(ok)
         {
-            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.GONE);
         }
         else{
             return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
