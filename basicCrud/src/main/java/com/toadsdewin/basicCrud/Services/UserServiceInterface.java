@@ -3,7 +3,6 @@ import com.toadsdewin.basicCrud.Models.UserModel;
 import java.util.ArrayList;
 import java.util.Optional;
 
-
 public interface UserServiceInterface {
     /**This method can get all the users from the DB**/
     public ArrayList<UserModel>getUsers();

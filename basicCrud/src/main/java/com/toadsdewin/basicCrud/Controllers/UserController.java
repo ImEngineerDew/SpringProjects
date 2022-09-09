@@ -21,8 +21,6 @@ public class UserController implements UserControllerInterface
     {
         return ResponseEntity.ok("Prueba superada");
     }
-    /*A Response entity is a polite path for getting an answer*/
-
     /**POST METHOD**/
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
@@ -39,11 +37,17 @@ public class UserController implements UserControllerInterface
     }
     /**UPGRADE METHOD OR PUT METHOD**/
     @Override
+<<<<<<< HEAD
     @ResponseStatus(code = HttpStatus.CREATED)
     public UserModel upgradeUser(UserModel user, Long id)
     {
        System.out.println("The user has been upgraded");
        return this.userServiceInterface.upgradeUser(user);
+=======
+    public ResponseEntity<String> upgradeUser(UserModel user,Long id)
+    {
+       return null;
+>>>>>>> f53a06419c84f57619544c81b791a24599f77f78
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
@@ -58,11 +62,12 @@ public class UserController implements UserControllerInterface
         }
             return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
     }
-    /*This linecode can find the user by career */
+    /**This linecode can find the user by career **/
     @Override
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
+    /**This linecode can find the user by country **/
     public ResponseEntity<ArrayList<UserModel>> getCountry(String country) {
         ArrayList<UserModel> nameCountry = null;
         try {
@@ -79,12 +84,12 @@ public class UserController implements UserControllerInterface
     {
         return this.userServiceInterface.getByRol(rol);
     }
-    /*This linecode can find the user by id*/
+    /**This linecode can find the user by id**/
     @Override
     public Optional<UserModel> getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
-    /*This linecode might delete the user by id*/
+    /**This linecode might delete the user by id**/
     @Override
     public ResponseEntity<String> deleteById(Long id)
     {
