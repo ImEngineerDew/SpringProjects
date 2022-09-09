@@ -28,6 +28,12 @@ public class UserService implements UserServiceInterface
             return null;
         }
     }
+
+    @Override
+    public UserModel upgradeUser(UserModel user)
+    {
+        return userRepository.save(user);
+    }
     @Override
     public Optional<UserModel> getById(Long id) {
         return userRepository.findById(id);

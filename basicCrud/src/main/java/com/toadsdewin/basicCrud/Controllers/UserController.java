@@ -14,12 +14,16 @@ public class UserController implements UserControllerInterface
 {
     @Autowired
     UserServiceInterface userServiceInterface;
+
+    /*GET METHOD*/
     @GetMapping
     public ResponseEntity<String>messageMethod()
     {
         return ResponseEntity.ok("Prueba superada");
     }
     /*A Response entity is a polite path for getting an answer*/
+
+    /*POST METHOD*/
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
     {
@@ -32,7 +36,12 @@ public class UserController implements UserControllerInterface
             error.getMessage();
         }
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
-        }
+    }
+    @Override
+    public UserModel upgradeUser(UserModel user, Long id)
+    {
+       return this.userServiceInterface.upgradeUser(user);
+    }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
     {
