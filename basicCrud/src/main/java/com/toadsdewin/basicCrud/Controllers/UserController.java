@@ -37,17 +37,9 @@ public class UserController implements UserControllerInterface
     }
     /**UPGRADE METHOD OR PUT METHOD**/
     @Override
-    public ResponseEntity<String> upgradeUser(UserModel user, Long id)
+    public ResponseEntity<String> upgradeUser(UserModel user,Long id)
     {
-        boolean upgraded = this.userServiceInterface.upgradeUser(user);
-        if(upgraded)
-        {
-            return new ResponseEntity<>("The user has been upgraded with the id: "+id, HttpStatus.CREATED);
-        }
-        else
-        {
-            return new ResponseEntity<>("The user hasn't been upgraded with the id: "+id, HttpStatus.OK);
-        }
+       return null;
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()

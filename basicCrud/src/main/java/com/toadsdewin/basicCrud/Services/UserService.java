@@ -28,15 +28,9 @@ public class UserService implements UserServiceInterface
         }
     }
     @Override
-    public boolean upgradeUser(UserModel user)
+    public UserModel upgradeUser(UserModel user)
     {
-        try {
-            userRepository.save(user);
-            return true;
-        }
-        catch(Exception error) {
-            return false;
-        }
+        return userRepository.save(user);
     }
     @Override
     public Optional<UserModel> getById(Long id) {
