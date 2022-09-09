@@ -12,7 +12,7 @@ public interface UserControllerInterface
     @PostMapping(path = "/add")
     public ResponseEntity<UserModel> saveUser(@Valid @RequestBody UserModel user);
     @PutMapping(path = "/add/{id}")
-    public UserModel upgradeUser(@Valid @RequestBody UserModel user, @PathVariable("id")Long id );
+    public UserModel upgradeUser(@Valid @RequestBody UserModel user, @Valid @PathVariable("id")Long id );
     @GetMapping(path = "/all")
     public ResponseEntity<ArrayList<UserModel>> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
