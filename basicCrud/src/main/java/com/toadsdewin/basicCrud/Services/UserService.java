@@ -3,7 +3,6 @@ import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -11,7 +10,7 @@ import java.util.Optional;
 public class UserService implements UserServiceInterface
 {
     @Autowired
-    UserRepository userRepository;
+    UserRepository userRepository;  /**Call the UserRepository class**/
     @Override
     public ArrayList<UserModel> getUsers() {
         return (ArrayList<UserModel>) userRepository.findAll();
@@ -28,7 +27,6 @@ public class UserService implements UserServiceInterface
             return null;
         }
     }
-
     @Override
     public UserModel upgradeUser(UserModel user)
     {

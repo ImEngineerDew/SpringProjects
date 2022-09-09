@@ -38,6 +38,7 @@ public class UserController implements UserControllerInterface
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
     @Override
+    @ResponseStatus(HttpStatus.CREATED)
     public UserModel upgradeUser(UserModel user, Long id)
     {
        return this.userServiceInterface.upgradeUser(user);
