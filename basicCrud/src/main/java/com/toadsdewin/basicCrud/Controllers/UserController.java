@@ -21,8 +21,6 @@ public class UserController implements UserControllerInterface
     {
         return ResponseEntity.ok("Prueba superada");
     }
-    /*A Response entity is a polite path for getting an answer*/
-
     /**POST METHOD**/
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
@@ -41,8 +39,15 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<String> upgradeUser(UserModel user, Long id)
     {
-        this.userServiceInterface.upgradeUser(user);
-        return new ResponseEntity<>("The user has been upgraded", HttpStatus.CREATED);
+        boolean upgraded = this.userServiceInterface.upgradeUser(user);
+        if(upgraded)
+        {
+            return new ResponseEntity<>("The user has been upgraded with the id: "+id, HttpStatus.CREATED);
+        }
+        else
+        {
+            return new ResponseEntity<>("The user hasn't been upgraded with the id: "+id, HttpStatus.OK);
+        }
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
@@ -57,11 +62,12 @@ public class UserController implements UserControllerInterface
         }
             return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
     }
-    /*This linecode can find the user by career */
+    /**This linecode can find the user by career **/
     @Override
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
+    /**This linecode can find the user by country **/
     public ResponseEntity<ArrayList<UserModel>> getCountry(String country) {
         ArrayList<UserModel> nameCountry = null;
         try {
@@ -78,12 +84,12 @@ public class UserController implements UserControllerInterface
     {
         return this.userServiceInterface.getByRol(rol);
     }
-    /*This linecode can find the user by id*/
+    /**This linecode can find the user by id**/
     @Override
     public Optional<UserModel> getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
-    /*This linecode might delete the user by id*/
+    /**This linecode might delete the user by id**/
     @Override
     public ResponseEntity<String> deleteById(Long id)
     {
