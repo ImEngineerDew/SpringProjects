@@ -19,7 +19,7 @@ public class UserController implements UserControllerInterface
     @GetMapping
     public ResponseEntity<String>messageMethod()
     {
-        return ResponseEntity.ok("Prueba superada");
+        return ResponseEntity.ok("Test successful");
     }
     /*A Response entity is a polite path for getting an answer*/
 
@@ -57,7 +57,7 @@ public class UserController implements UserControllerInterface
         }
         return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
     }
-    /*This linecode can find the user by career */
+    /*This line code can find the user by career */
     @Override
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
@@ -78,12 +78,12 @@ public class UserController implements UserControllerInterface
     {
         return this.userServiceInterface.getByRol(rol);
     }
-    /*This linecode can find the user by id*/
+    /*This line code can find the user by id*/
     @Override
     public Optional<UserModel> getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
-    /*This linecode might delete the user by id*/
+    /*This line code might delete the user by id*/
     @Override
     public ResponseEntity<String> deleteById(Long id)
     {

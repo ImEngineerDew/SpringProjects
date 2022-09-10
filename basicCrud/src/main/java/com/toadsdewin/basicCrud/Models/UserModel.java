@@ -16,7 +16,7 @@ public class UserModel {
     private String rol;
     private String career;
 
-    public UserModel() {} /*An empty consturctor*/
+    public UserModel() {} /*An empty constructor*/
 
     public UserModel(Long id, String name, String surname,String country, String email, String rol, String career)
     {
