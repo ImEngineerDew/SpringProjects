@@ -38,11 +38,11 @@ public class UserController implements UserControllerInterface
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
     /**UPGRADE METHOD OR PUT METHOD**/
+
     @Override
-    public ResponseEntity<String> upgradeUser(UserModel user, Long id)
+    public UserModel upgradeUser(UserModel user,Long id)
     {
-        this.userServiceInterface.upgradeUser(user);
-        return new ResponseEntity<>("The user has been upgraded", HttpStatus.CREATED);
+        return userServiceInterface.upgradeUser(user,id);
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()

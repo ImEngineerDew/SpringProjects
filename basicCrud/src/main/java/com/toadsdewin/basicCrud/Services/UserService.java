@@ -4,6 +4,7 @@ import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -28,9 +29,35 @@ public class UserService implements UserServiceInterface
         }
     }
     @Override
-    public UserModel upgradeUser(UserModel user)
+    public UserModel upgradeUser(UserModel user,Long id)
     {
-        return userRepository.save(user);
+        UserModel upgrade = userRepository.findById(id).get();
+
+        if(Objects.nonNull(user.getName()) && ! "".equalsIgnoreCase(user.getName()))
+        {
+            upgrade.setName(user.getName());
+        }
+        if(Objects.nonNull(user.getSurname()) && ! "".equalsIgnoreCase(user.getSurname()))
+        {
+            upgrade.setSurname(user.getSurname());
+        }
+        if(Objects.nonNull(user.getCountry()) && ! "".equalsIgnoreCase(user.getCountry()))
+        {
+            upgrade.setCountry(user.getCountry());
+        }
+        if(Objects.nonNull(user.getEmail()) && ! "".equalsIgnoreCase(user.getEmail()))
+        {
+            upgrade.setEmail(user.getEmail());
+        }
+        if(Objects.nonNull(user.getRol()) && ! "".equalsIgnoreCase(user.getRol()))
+        {
+            upgrade.setRol(user.getRol());
+        }
+        if(Objects.nonNull(user.getCareer()) && ! "".equalsIgnoreCase(user.getCareer()))
+        {
+            upgrade.setCareer(user.getCareer());
+        }
+        return userRepository.save(upgrade);
     }
     @Override
     public Optional<UserModel> getById(Long id) {
