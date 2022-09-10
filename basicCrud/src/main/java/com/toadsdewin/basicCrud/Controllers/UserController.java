@@ -38,8 +38,8 @@ public class UserController implements UserControllerInterface
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
     /**UPGRADE METHOD OR PUT METHOD**/
-
     @Override
+    @ResponseStatus(HttpStatus.CREATED)
     public UserModel upgradeUser(UserModel user,Long id)
     {
         return userServiceInterface.upgradeUser(user,id);

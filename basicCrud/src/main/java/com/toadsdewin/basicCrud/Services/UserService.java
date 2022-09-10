@@ -2,6 +2,8 @@ package com.toadsdewin.basicCrud.Services;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,48 +31,51 @@ public class UserService implements UserServiceInterface
         }
     }
     @Override
-    public UserModel upgradeUser(UserModel user,Long id)
+    public UserModel upgradeUser(UserModel user, Long id)
     {
-        UserModel upgrade = userRepository.findById(id).get();
+        try {
+            UserModel upgrade = userRepository.findById(id).get();
 
-        if(Objects.nonNull(user.getName()) && ! "".equalsIgnoreCase(user.getName()))
+            if (Objects.nonNull(user.getName()) && !"".equalsIgnoreCase(user.getName())) {
+                upgrade.setName(user.getName());
+            }
+            if (Objects.nonNull(user.getSurname()) && !"".equalsIgnoreCase(user.getSurname())) {
+                upgrade.setSurname(user.getSurname());
+            }
+            if (Objects.nonNull(user.getCountry()) && !"".equalsIgnoreCase(user.getCountry())) {
+                upgrade.setCountry(user.getCountry());
+            }
+            if (Objects.nonNull(user.getEmail()) && !"".equalsIgnoreCase(user.getEmail())) {
+                upgrade.setEmail(user.getEmail());
+            }
+            if (Objects.nonNull(user.getRol()) && !"".equalsIgnoreCase(user.getRol())) {
+                upgrade.setRol(user.getRol());
+            }
+            if (Objects.nonNull(user.getCareer()) && !"".equalsIgnoreCase(user.getCareer())) {
+                upgrade.setCareer(user.getCareer());
+            }
+            return userRepository.save(upgrade);
+        }catch(Exception error)
         {
-            upgrade.setName(user.getName());
+            error.getMessage();
         }
-        if(Objects.nonNull(user.getSurname()) && ! "".equalsIgnoreCase(user.getSurname()))
-        {
-            upgrade.setSurname(user.getSurname());
-        }
-        if(Objects.nonNull(user.getCountry()) && ! "".equalsIgnoreCase(user.getCountry()))
-        {
-            upgrade.setCountry(user.getCountry());
-        }
-        if(Objects.nonNull(user.getEmail()) && ! "".equalsIgnoreCase(user.getEmail()))
-        {
-            upgrade.setEmail(user.getEmail());
-        }
-        if(Objects.nonNull(user.getRol()) && ! "".equalsIgnoreCase(user.getRol()))
-        {
-            upgrade.setRol(user.getRol());
-        }
-        if(Objects.nonNull(user.getCareer()) && ! "".equalsIgnoreCase(user.getCareer()))
-        {
-            upgrade.setCareer(user.getCareer());
-        }
-        return userRepository.save(upgrade);
+        return null;
     }
     @Override
-    public Optional<UserModel> getById(Long id) {
+    public Optional<UserModel> getById(Long id)
+    {
         return userRepository.findById(id);
     }
-
     @Override
-    public ArrayList<UserModel> getByRol(String rol) {
+    public ArrayList<UserModel> getByRol(String rol)
+    {
         return userRepository.findByRol(rol);
     }
-
     @Override
-    public ArrayList<UserModel>getByCountry(String country) {return userRepository.findByCountry(country);}
+    public ArrayList<UserModel>getByCountry(String country)
+    {
+        return userRepository.findByCountry(country);
+    }
 
     @Override
     public ArrayList<UserModel> getByCareer(String career) {
