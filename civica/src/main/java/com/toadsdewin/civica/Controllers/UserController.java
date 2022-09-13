@@ -1,7 +1,7 @@
 package com.toadsdewin.civica.Controllers;
 
 import com.toadsdewin.civica.Models.UserModel;
-import com.toadsdewin.civica.Services.UserServices;
+import com.toadsdewin.civica.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class UserController
 {
     @Autowired
-    UserServices userService;
+    UserService userService;
 
     @PostMapping("/users")
     public ResponseEntity<Map<String,String>> saveUsers(@Valid @RequestBody UserModel user)
