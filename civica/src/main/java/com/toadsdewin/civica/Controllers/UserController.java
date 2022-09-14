@@ -69,6 +69,23 @@ public class UserController
             return new ResponseEntity<>(genderQuery,HttpStatus.NOT_FOUND);
         }
     }
+    @RequestMapping(value = "query", params = "fullName")
+    public ResponseEntity<ArrayList<UserModel>>getFullName(@RequestParam String fullName)
+    {
+        ArrayList<UserModel> queryFullName = null;
+
+        try
+        {
+            queryFullName = this.userService.getFullName(fullName);
+            return new ResponseEntity<>(queryFullName,HttpStatus.OK);
+        }
+        catch(Exception error)
+        {
+            queryFullName = null;
+            return new ResponseEntity<>(queryFullName,HttpStatus.NO_CONTENT);
+        }
+
+    }
     @RequestMapping(value = "query", params="city")
     public ResponseEntity<ArrayList<UserModel>>getByCity(@RequestParam String city)
     {
@@ -83,6 +100,19 @@ public class UserController
         {
             findCity = null;
             return new ResponseEntity<>(findCity, HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable("id")Long id)
+    {
+        boolean isDeleted = this.userService.eraseUser(id);
+
+        if(isDeleted)
+        {
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.GONE);
+        }
+        else{
+            return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
         }
     }
 }
