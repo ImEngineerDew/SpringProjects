@@ -1,6 +1,7 @@
 package com.toadsdewin.civica.Controllers;
 import com.toadsdewin.civica.Models.UserModel;
 import com.toadsdewin.civica.Services.UserService;
+import org.apache.catalina.User;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,5 +58,19 @@ public class UserController
     public Optional<UserModel>getById(@PathVariable("id")Long id)
     {
         return this.userService.getById(id);
+    }
+    @RequestMapping(value = "query",params = "gender")
+    public ResponseEntity<ArrayList<UserModel>>getByGender(@RequestParam String gender)
+    {
+        try
+        {
+            ArrayList<UserModel>genderQuery = this.userService.getByGender(gender);
+            return new ResponseEntity<>(genderQuery,HttpStatus.FOUND);
+        }
+        catch(Exception error)
+        {
+            ArrayList<UserModel>genderQuery = null;
+            return new ResponseEntity<>(genderQuery,HttpStatus.NOT_FOUND);
+        }
     }
 }
