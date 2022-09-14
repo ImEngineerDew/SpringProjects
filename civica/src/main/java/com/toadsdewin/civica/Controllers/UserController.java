@@ -33,7 +33,7 @@ public class UserController
         }
         catch(Exception error)
         {
-            return new ResponseEntity<>(allUsers, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(allUsers, HttpStatus.NOT_FOUND);
         }
     }
     @PostMapping("/save")
@@ -67,6 +67,22 @@ public class UserController
         {
             ArrayList<UserModel>genderQuery = null;
             return new ResponseEntity<>(genderQuery,HttpStatus.NOT_FOUND);
+        }
+    }
+    @RequestMapping(value = "query", params="city")
+    public ResponseEntity<ArrayList<UserModel>>getByCity(@RequestParam String city)
+    {
+        ArrayList<UserModel> findCity = null;
+
+        try
+        {
+            findCity = this.userService.getByCity(city);
+            return new ResponseEntity<>(findCity, HttpStatus.OK);
+        }
+        catch(Exception error)
+        {
+            findCity = null;
+            return new ResponseEntity<>(findCity, HttpStatus.NOT_FOUND);
         }
     }
 }
