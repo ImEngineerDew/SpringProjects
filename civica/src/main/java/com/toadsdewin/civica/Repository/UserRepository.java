@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<UserModel,String>
+public interface UserRepository extends JpaRepository<UserModel,Long>
 {
     public ArrayList<UserModel> findByFullName(String fullName);
     public ArrayList<UserModel> findByGender(String gender);

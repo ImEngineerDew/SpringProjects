@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/civica")
@@ -51,5 +52,10 @@ public class UserController
         {
             return new ResponseEntity<>(newUser,HttpStatus.NO_CONTENT);
         }
+    }
+    @GetMapping("/{id}")
+    public Optional<UserModel>getById(@PathVariable("id")Long id)
+    {
+        return this.userService.getById(id);
     }
 }

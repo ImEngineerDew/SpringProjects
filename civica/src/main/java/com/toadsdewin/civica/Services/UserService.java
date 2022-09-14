@@ -33,7 +33,7 @@ public class UserService implements UserServiceInterface
     }
     @Override
     public Optional<UserModel> getById(Long id) {
-        return userRepository.findById(String.valueOf(id));
+        return userRepository.findById(id);
     }
     @Override
     public ArrayList<UserModel> getByAge(Integer age) {
@@ -43,7 +43,7 @@ public class UserService implements UserServiceInterface
     public boolean eraseUser(Long id) {
         try
         {
-            userRepository.deleteById(String.valueOf(id));
+            userRepository.deleteById(id);
             return true;
         }
         catch(Exception error)
