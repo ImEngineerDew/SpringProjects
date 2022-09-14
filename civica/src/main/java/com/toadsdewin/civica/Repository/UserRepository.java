@@ -7,7 +7,8 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserModel,String>
 {
-    public Optional<UserModel> findByFullName(String fullName);
+    public ArrayList<UserModel> findByFullName(String fullName);
     public ArrayList<UserModel> findByGender(String gender);
     public ArrayList<UserModel> findByCity(String city);
+    public ArrayList<UserModel> findByAge(Integer age);
 }

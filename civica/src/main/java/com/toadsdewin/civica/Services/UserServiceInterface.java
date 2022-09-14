@@ -11,6 +11,6 @@ public interface UserServiceInterface
     public ArrayList<UserModel> getFullName(String fullName);
     public UserModel saveUser(UserModel user);
     public Optional<UserModel> getById(Long id);
-    public Optional<UserModel> getByAge(Integer age);
+    public ArrayList<UserModel> getByAge(Integer age);
     public boolean eraseUser(Long id);
 }
