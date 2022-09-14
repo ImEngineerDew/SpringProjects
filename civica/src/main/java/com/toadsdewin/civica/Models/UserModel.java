@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="users")
-public class UserModel implements Serializable {
+public class UserModel{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (unique = true, nullable = false)
     private Long id;
     public String gender;
     public String fullName;
