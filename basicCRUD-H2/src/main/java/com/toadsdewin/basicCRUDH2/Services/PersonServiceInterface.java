@@ -10,6 +10,6 @@ public interface PersonServiceInterface
     public Person upgradeUser(Person user,Long id);
     public Optional<Person> getById(Long id);
     public ArrayList<Person> findByEmail (String email);
-    public ArrayList<Person> findByPhone(String phone);
+    public ArrayList<Person> findByPhone(Integer phone);
     public boolean deleteUser(Long id);
 }
