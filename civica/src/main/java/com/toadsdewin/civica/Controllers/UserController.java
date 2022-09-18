@@ -66,13 +66,13 @@ public class UserController
         catch(Exception error)
         {
             ArrayList<UserModel>genderQuery = null;
-            return new ResponseEntity<>(genderQuery,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @RequestMapping(value = "query", params = "fullName")
     public ResponseEntity<ArrayList<UserModel>>getFullName(@RequestParam String fullName)
     {
-        ArrayList<UserModel> queryFullName = null;
+        ArrayList<UserModel> queryFullName;
 
         try
         {
@@ -82,14 +82,14 @@ public class UserController
         catch(Exception error)
         {
             queryFullName = null;
-            return new ResponseEntity<>(queryFullName,HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
     }
     @RequestMapping(value = "query", params="city")
     public ResponseEntity<ArrayList<UserModel>>getByCity(@RequestParam String city)
     {
-        ArrayList<UserModel> findCity = null;
+        ArrayList<UserModel> findCity;
 
         try
         {
@@ -99,7 +99,7 @@ public class UserController
         catch(Exception error)
         {
             findCity = null;
-            return new ResponseEntity<>(findCity, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @DeleteMapping(path = "/{id}")

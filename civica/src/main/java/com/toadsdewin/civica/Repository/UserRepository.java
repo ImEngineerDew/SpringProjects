@@ -1,10 +1,10 @@
 package com.toadsdewin.civica.Repository;
 import com.toadsdewin.civica.Models.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
-import java.util.Optional;
 
+@Repository
 public interface UserRepository extends JpaRepository<UserModel,Long>
 {
     public ArrayList<UserModel> findByFullName(String fullName);
