@@ -4,6 +4,7 @@ import com.toadsdewin.basicCRUDH2.Repositories.PersonInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -20,12 +21,35 @@ public class PersonService implements PersonServiceInterface
     public Person saveUser(Person user) {
         return personInterface.save(user);
     }
-
     @Override
     public Person upgradeUser(Person user, Long id) {
+        try
+        {
+            Person upgrade = personInterface.findById(id).get();
+
+            if (Objects.nonNull(user.getName()) && !"".equalsIgnoreCase(user.getName())) {
+                upgrade.setName(user.getName());
+            }
+            if (Objects.nonNull(user.getSurname()) && !"".equalsIgnoreCase(user.getSurname())) {
+                upgrade.setSurname(user.getSurname());
+            }
+            if (Objects.nonNull(user.getCountry()) && !"".equalsIgnoreCase(user.getCountry())) {
+                upgrade.setCountry(user.getCountry());
+            }
+            if (Objects.nonNull(user.getEmail()) && !"".equalsIgnoreCase(user.getEmail())) {
+                upgrade.setEmail(user.getEmail());
+            }
+            if (Objects.nonNull(user.getPhone())) {
+                upgrade.setPhone(user.getPhone());
+            }
+                return personInterface.save(upgrade);
+        }
+        catch(Exception error)
+        {
+            error.getMessage();
+        }
         return null;
     }
-
     @Override
     public Optional<Person> getById(Long id) {
         return personInterface.findById(id);
@@ -40,6 +64,14 @@ public class PersonService implements PersonServiceInterface
     }
     @Override
     public boolean deleteUser(Long id) {
-        return false;
+        try
+        {
+            personInterface.deleteById(id);
+            return true;
+        }
+        catch(Exception error)
+        {
+            return false;
+        }
     }
 }
