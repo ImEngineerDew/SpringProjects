@@ -6,11 +6,17 @@ import javax.persistence.*;
 public class Person
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname;
+    @Column(length = 10)
     private String email;
+    @Column(nullable = false)
     private String country;
+    @Column(nullable = false)
     private Integer phone;
 
     public Person()
