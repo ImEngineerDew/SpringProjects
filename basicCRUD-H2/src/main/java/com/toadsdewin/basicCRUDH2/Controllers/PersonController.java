@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,10 @@ public class PersonController implements PersonControllerInterface
 {
     @Autowired
     PersonService personService;
+    public ResponseEntity<String>messageTesting()
+    {
+        return new ResponseEntity<>("Prueba superada",HttpStatus.OK);
+    }
     @Override
     public ResponseEntity<ArrayList<Person>> getUsers()
     {
@@ -29,7 +34,7 @@ public class PersonController implements PersonControllerInterface
 
             if (userFindAll.isEmpty())
             {
-                System.out.println("User not found");
+                System.out.println("Todavía no hay usuarios!");
                 return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
             }
             else
@@ -44,7 +49,7 @@ public class PersonController implements PersonControllerInterface
         }
     }
     @Override
-    public ResponseEntity<?> getUserById(Long id) {
+    public ResponseEntity<?> getUserById(@PathVariable("id")Long id) {
         Person personIsExist = null;
 
         Map<String, Object> response = new HashMap<>();
