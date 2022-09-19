@@ -28,7 +28,7 @@ public class PersonController implements PersonControllerInterface
         catch(Exception error)
         {
             error.getMessage();
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
         }
     }
     @Override
