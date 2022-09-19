@@ -58,8 +58,8 @@ public class PersonService implements PersonServiceInterface
         return null;
     }
     @Override
-    public Optional<Person> getById(Long id) {
-        return personInterface.findById(id);
+    public Person getById(Long id) {
+        return personInterface.findById(id).orElse(null);
     }
     @Override
     public ArrayList<Person> findByEmail(String email) {

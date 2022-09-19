@@ -2,12 +2,16 @@ package com.toadsdewin.basicCRUDH2.Controllers;
 import com.toadsdewin.basicCRUDH2.Models.Person;
 import com.toadsdewin.basicCRUDH2.Services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/personCRUD")
@@ -15,7 +19,6 @@ public class PersonController implements PersonControllerInterface
 {
     @Autowired
     PersonService personService;
-
     @Override
     public ResponseEntity<ArrayList<Person>> getUsers()
     {
@@ -40,6 +43,30 @@ public class PersonController implements PersonControllerInterface
             return null;
         }
     }
+    @Override
+    public ResponseEntity<?> getUserById(Long id) {
+        Person personIsExist = null;
+
+        Map<String, Object> response = new HashMap<>();
+
+        try
+        {
+            personIsExist = personService.getById(id);
+        }
+        catch(DataAccessException error)
+        {
+            response.put("mensaje", "Error al realizar la consulta en la base de datos");
+            response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if(personIsExist==null)
+        {
+            response.put("mensaje", "El cliente ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(personIsExist,HttpStatus.OK);
+    }
+
     @Override
     public ResponseEntity<Person>savePerson(@RequestBody Person person)
     {
