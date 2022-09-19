@@ -1,5 +1,7 @@
+com\toadsdewin\basicCRUDH2\Controllers\PersonController.class
 com\toadsdewin\basicCRUDH2\Services\PersonService.class
-com\toadsdewin\basicCRUDH2\Models\Person.class
 com\toadsdewin\basicCRUDH2\BasicCrudH2Application.class
-com\toadsdewin\basicCRUDH2\Repositories\PersonInterface.class
 com\toadsdewin\basicCRUDH2\Services\PersonServiceInterface.class
+com\toadsdewin\basicCRUDH2\Models\Person.class
+com\toadsdewin\basicCRUDH2\Controllers\PersonControllerInterface.class
+com\toadsdewin\basicCRUDH2\Repositories\PersonInterface.class
