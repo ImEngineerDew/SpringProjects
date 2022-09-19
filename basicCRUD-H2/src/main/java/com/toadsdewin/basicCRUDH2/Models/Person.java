@@ -12,18 +12,18 @@ public class Person
     private String name;
     @Column(nullable = false)
     private String surname;
-    @Column(length = 10)
+    @Column(length = 100)
     private String email;
     @Column(nullable = false)
     private String country;
     @Column(nullable = false)
-    private Integer phone;
+    private Long phone;
 
     public Person()
     {
 
     }
-    public Person(Long id, String name, String surname, String email, String country, Integer phone)
+    public Person(Long id, String name, String surname, String email, String country, Long phone)
     {
         this.id = id;
         this.name = name;
@@ -62,10 +62,10 @@ public class Person
     public void setCountry(String country) {
         this.country = country;
     }
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 }

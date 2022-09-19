@@ -18,31 +18,38 @@ public class PersonService implements PersonServiceInterface
         return (ArrayList<Person>) personInterface.findAll();
     }
     @Override
-    public Person saveUser(Person user) {
-        return personInterface.save(user);
+    public Person saveUser(Person person) {
+        if(person.getId() == null)
+        {
+            return personInterface.save(person);
+        }
+        else
+        {
+            return null;
+        }
     }
     @Override
-    public Person upgradeUser(Person user, Long id) {
+    public Person upgradeUser(Person person, Long id) {
         try
         {
             Person upgrade = personInterface.findById(id).get();
 
-            if (Objects.nonNull(user.getName()) && !"".equalsIgnoreCase(user.getName())) {
-                upgrade.setName(user.getName());
+            if (Objects.nonNull(person.getName()) && !"".equalsIgnoreCase(person.getName())) {
+                upgrade.setName(person.getName());
             }
-            if (Objects.nonNull(user.getSurname()) && !"".equalsIgnoreCase(user.getSurname())) {
-                upgrade.setSurname(user.getSurname());
+            if (Objects.nonNull(person.getSurname()) && !"".equalsIgnoreCase(person.getSurname())) {
+                upgrade.setSurname(person.getSurname());
             }
-            if (Objects.nonNull(user.getCountry()) && !"".equalsIgnoreCase(user.getCountry())) {
-                upgrade.setCountry(user.getCountry());
+            if (Objects.nonNull(person.getCountry()) && !"".equalsIgnoreCase(person.getCountry())) {
+                upgrade.setCountry(person.getCountry());
             }
-            if (Objects.nonNull(user.getEmail()) && !"".equalsIgnoreCase(user.getEmail())) {
-                upgrade.setEmail(user.getEmail());
+            if (Objects.nonNull(person.getEmail()) && !"".equalsIgnoreCase(person.getEmail())) {
+                upgrade.setEmail(person.getEmail());
             }
-            if (Objects.nonNull(user.getPhone())) {
-                upgrade.setPhone(user.getPhone());
+            if (Objects.nonNull(person.getPhone())) {
+                upgrade.setPhone(person.getPhone());
             }
-                return personInterface.save(upgrade);
+                return personInterface.save(person);
         }
         catch(Exception error)
         {

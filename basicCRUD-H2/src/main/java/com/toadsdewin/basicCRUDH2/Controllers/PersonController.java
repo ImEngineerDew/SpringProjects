@@ -4,6 +4,7 @@ import com.toadsdewin.basicCRUDH2.Services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
@@ -18,16 +19,29 @@ public class PersonController implements PersonControllerInterface
     @Override
     public ResponseEntity<ArrayList<Person>> getUsers()
     {
-        ArrayList<Person> findPerson = null;
-
-        if(findPerson!=null)
+        ArrayList<Person> userFindAll = null;
+        try
         {
-            findPerson = this.personService.getAllUsers();
-            return new ResponseEntity<>(findPerson, HttpStatus.FOUND);
+            userFindAll = this.personService.getAllUsers();
+            return new ResponseEntity<>(userFindAll,HttpStatus.FOUND);
         }
-        else
+        catch(Exception error)
         {
+            error.getMessage();
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
+    }
+    @Override
+    public ResponseEntity<Person>savePerson(@RequestBody Person person)
+    {
+        Person userSaved = null;
+        try {
+            userSaved = this.personService.saveUser(person);
+        }
+        catch(Exception error)
+        {
+            error.getMessage();
+        }
+        return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
 }
