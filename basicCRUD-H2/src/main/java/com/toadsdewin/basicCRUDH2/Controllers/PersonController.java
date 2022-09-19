@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/personCRUD")
@@ -34,7 +33,7 @@ public class PersonController implements PersonControllerInterface
 
             if (userFindAll.isEmpty())
             {
-                System.out.println("Todavía no hay usuarios!");
+                System.out.println("Doesn't exist users yet!");
                 return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
             }
             else
@@ -60,13 +59,13 @@ public class PersonController implements PersonControllerInterface
         }
         catch(DataAccessException error)
         {
-            response.put("mensaje", "Error al realizar la consulta en la base de datos");
+            response.put("Message", "DB doesn't exist yet!");
             response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         if(personIsExist==null)
         {
-            response.put("mensaje", "El cliente ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            response.put("Message", "The person ID: ".concat(id.toString().concat(" doesn't exist in the database!")));
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(personIsExist,HttpStatus.OK);
