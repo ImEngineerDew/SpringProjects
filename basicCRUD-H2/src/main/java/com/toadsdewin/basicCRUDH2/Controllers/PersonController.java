@@ -4,6 +4,7 @@ import com.toadsdewin.basicCRUDH2.Services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,16 +20,25 @@ public class PersonController implements PersonControllerInterface
     @Override
     public ResponseEntity<ArrayList<Person>> getUsers()
     {
-        ArrayList<Person> userFindAll = null;
+        ArrayList<Person> userFindAll;
         try
         {
             userFindAll = this.personService.getAllUsers();
-            return new ResponseEntity<>(userFindAll,HttpStatus.FOUND);
+
+            if (userFindAll.isEmpty())
+            {
+                System.out.println("User not found");
+                return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
+            }
+            else
+            {
+                return new ResponseEntity<>(userFindAll,HttpStatus.FOUND);
+            }
         }
         catch(Exception error)
         {
             error.getMessage();
-            return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
+            return null;
         }
     }
     @Override
@@ -43,5 +53,16 @@ public class PersonController implements PersonControllerInterface
             error.getMessage();
         }
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+    }
+    @Override
+    public ResponseEntity<String> deleteById(Long id) {
+        boolean ok = this.personService.deleteUser(id);
+        if(ok)
+        {
+            return new ResponseEntity<>("The user has been eliminated with the previous id: "+id,HttpStatus.GONE);
+        }
+        else{
+            return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
+        }
     }
 }
