@@ -49,8 +49,8 @@ public class PersonController implements PersonControllerInterface
     }
     @Override
     public ResponseEntity<?> getUserById(@PathVariable("id")Long id) {
-        Person personIsExist = null;
 
+        Person personIsExist = null;
         Map<String, Object> response = new HashMap<>();
 
         try
@@ -70,7 +70,6 @@ public class PersonController implements PersonControllerInterface
         }
         return new ResponseEntity<>(personIsExist,HttpStatus.OK);
     }
-
     @Override
     public ResponseEntity<Person>savePerson(@RequestBody Person person)
     {
