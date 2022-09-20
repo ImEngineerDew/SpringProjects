@@ -95,21 +95,18 @@ public class PersonController implements PersonControllerInterface
         }
     }
     @Override
-    public ResponseEntity<ArrayList<Person>> findByPhone(Long phone)
+    public ArrayList<Person> findByPhone(Long phone)
     {
-        this.personService.findByPhone(phone);
-        return new ResponseEntity<>(HttpStatus.FOUND);
+        return this.personService.findByPhone(phone);
     }
     @Override
-    public ResponseEntity<ArrayList<Person>> findByEmail(String email)
+    public ArrayList<Person> findByEmail(String email)
     {
-        this.personService.findByEmail(email);
-        return new ResponseEntity<>(HttpStatus.FOUND);
+        return this.personService.findByEmail(email);
     }
     @Override
-    public ResponseEntity<ArrayList<Person>> findByCountry(String country)
+    public ArrayList<Person> findByCountry(String country)
     {
-        this.personService.findByCountry(country);
-        return new ResponseEntity<>(HttpStatus.FOUND);
+        return this.personService.findByCountry(country);
     }
 }

@@ -18,10 +18,10 @@ public interface PersonControllerInterface
     @DeleteMapping(path="/{id}")
     public ResponseEntity<String>deleteById(@PathVariable("id") Long id);
     @RequestMapping(value = "/query", params = "phone")
-    public ResponseEntity<ArrayList<Person>> findByPhone(@RequestParam Long phone);
+    public ArrayList<Person> findByPhone(@RequestParam Long phone);
     @RequestMapping(value = "/query", params = "email")
-    public ResponseEntity<ArrayList<Person>> findByEmail(@RequestParam String email);
+    public ArrayList<Person> findByEmail(@RequestParam String email);
     @RequestMapping(value = "/query", params= "country")
-    public ResponseEntity<ArrayList<Person>> findByCountry(@RequestParam String country);
+    public ArrayList<Person> findByCountry(@RequestParam String country);
 
 }
