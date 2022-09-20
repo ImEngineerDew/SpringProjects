@@ -106,4 +106,10 @@ public class PersonController implements PersonControllerInterface
         this.personService.findByEmail(email);
         return new ResponseEntity<>(HttpStatus.FOUND);
     }
+    @Override
+    public ResponseEntity<ArrayList<Person>> findByCountry(String country)
+    {
+        this.personService.findByCountry(country);
+        return new ResponseEntity<>(HttpStatus.FOUND);
+    }
 }

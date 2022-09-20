@@ -70,6 +70,12 @@ public class PersonService implements PersonServiceInterface
         return personInterface.findByPhone(phone);
     }
     @Override
+    public ArrayList<Person> findByCountry(String country)
+    {
+        return personInterface.findByCountry(country);
+    }
+
+    @Override
     public boolean deleteUser(Long id) {
         try
         {

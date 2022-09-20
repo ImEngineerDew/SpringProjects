@@ -11,5 +11,6 @@ public interface PersonServiceInterface
     public Person getById(Long id);
     public ArrayList<Person> findByEmail (String email);
     public ArrayList<Person> findByPhone(Long phone);
+    public ArrayList<Person> findByCountry(String country);
     public boolean deleteUser(Long id);
 }
