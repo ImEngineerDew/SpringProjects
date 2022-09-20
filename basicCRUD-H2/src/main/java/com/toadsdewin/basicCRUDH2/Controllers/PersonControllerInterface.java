@@ -2,10 +2,7 @@ package com.toadsdewin.basicCRUDH2.Controllers;
 import com.toadsdewin.basicCRUDH2.Models.Person;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Optional;
 
 public interface PersonControllerInterface
 {
