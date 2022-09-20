@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +17,8 @@ public class PersonController implements PersonControllerInterface
 {
     @Autowired
     PersonService personService;
+
+    @GetMapping("/message")
     public ResponseEntity<String>messageTesting()
     {
         return new ResponseEntity<>("Prueba superada",HttpStatus.OK);
@@ -93,5 +93,17 @@ public class PersonController implements PersonControllerInterface
         else{
             return new ResponseEntity<>("The user hasn't been eliminated with the previous id: "+id,HttpStatus.BAD_REQUEST);
         }
+    }
+    @Override
+    public ResponseEntity<ArrayList<Person>> findByPhone(Long phone)
+    {
+        this.personService.findByPhone(phone);
+        return new ResponseEntity<>(HttpStatus.FOUND);
+    }
+    @Override
+    public ResponseEntity<ArrayList<Person>> findByEmail(String email)
+    {
+        this.personService.findByEmail(email);
+        return new ResponseEntity<>(HttpStatus.FOUND);
     }
 }

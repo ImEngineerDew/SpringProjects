@@ -8,5 +8,6 @@ import java.util.ArrayList;
 public interface PersonInterface extends JpaRepository<Person,Long>
 {
     public ArrayList<Person> findByEmail (String email);
-    public ArrayList<Person> findByPhone(Integer phone);
+    public ArrayList<Person> findByPhone(Long phone);
+    public ArrayList<Person> findByCountry(String country);
 }

@@ -66,7 +66,7 @@ public class PersonService implements PersonServiceInterface
         return personInterface.findByEmail(email);
     }
     @Override
-    public ArrayList<Person> findByPhone(Integer phone) {
+    public ArrayList<Person> findByPhone(Long phone) {
         return personInterface.findByPhone(phone);
     }
     @Override

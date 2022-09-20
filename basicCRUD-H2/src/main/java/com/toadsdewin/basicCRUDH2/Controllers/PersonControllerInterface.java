@@ -17,5 +17,9 @@ public interface PersonControllerInterface
     public ResponseEntity<Person> savePerson(@RequestBody Person person);
     @DeleteMapping(path="/{id}")
     public ResponseEntity<String>deleteById(@PathVariable("id") Long id);
+    @RequestMapping(value = "/query", params = "phone")
+    public ResponseEntity<ArrayList<Person>> findByPhone(@RequestParam Long phone);
+    @RequestMapping(value = "/query", params = "email")
+    public ResponseEntity<ArrayList<Person>> findByEmail(@RequestParam String email);
 
 }
