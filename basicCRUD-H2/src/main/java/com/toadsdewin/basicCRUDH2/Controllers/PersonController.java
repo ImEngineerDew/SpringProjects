@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -105,8 +106,22 @@ public class PersonController implements PersonControllerInterface
         return this.personService.findByEmail(email);
     }
     @Override
-    public ArrayList<Person> findByCountry(String country)
+    public ResponseEntity<ArrayList<Person>> findByCountry(String country)
     {
-        return this.personService.findByCountry(country);
+        ArrayList<Person> countryQuery = null;
+
+        try {
+            countryQuery = this.personService.findByCountry(country);
+        }
+        catch(DataAccessException error)
+        {
+            error.getMessage();
+        }
+        if(countryQuery==null)
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.FOUND);
+
     }
 }

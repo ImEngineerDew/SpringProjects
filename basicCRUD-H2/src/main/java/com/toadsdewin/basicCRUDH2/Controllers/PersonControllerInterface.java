@@ -19,6 +19,6 @@ public interface PersonControllerInterface
     @RequestMapping(value = "/query", params = "email")
     public ArrayList<Person> findByEmail(@RequestParam String email);
     @RequestMapping(value = "/query", params= "country")
-    public ArrayList<Person> findByCountry(@RequestParam String country);
+    public ResponseEntity<ArrayList<Person>> findByCountry(@RequestParam String country);
 
 }
