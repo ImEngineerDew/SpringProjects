@@ -102,7 +102,8 @@ public class UserController implements UserControllerInterface
 
         if(userExist == null)
         {
-
+            response.put("Message", "The person ID: ".concat(id.toString().concat(" doesn't exist in the database!")));
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(userExist,HttpStatus.OK);
     }
