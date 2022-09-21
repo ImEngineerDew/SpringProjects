@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -80,8 +82,11 @@ public class UserController implements UserControllerInterface
     }
     /*This line code can find the user by id*/
     @Override
-    public UserModel getUserById(Long id) {
-        return this.userServiceInterface.getById(id);
+    public ResponseEntity<?> getUserById(@PathVariable("id") Long id)
+    {
+        UserModel userExist = null;
+
+        Map<String,Object> response = new HashMap<>();
     }
     /*This line code might delete the user by id*/
     @Override

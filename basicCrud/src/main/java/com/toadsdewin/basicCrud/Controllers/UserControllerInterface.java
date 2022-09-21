@@ -20,7 +20,7 @@ public interface UserControllerInterface
     @RequestMapping(value = "/query",params = "country")
     public ResponseEntity<ArrayList<UserModel>>getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")
-    public UserModel getUserById(@PathVariable ("id")Long id);
+    public ResponseEntity<?> getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById (@PathVariable("id")Long id);
 }
