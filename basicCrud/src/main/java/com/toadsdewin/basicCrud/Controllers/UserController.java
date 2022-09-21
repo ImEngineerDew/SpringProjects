@@ -2,6 +2,7 @@ package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +88,23 @@ public class UserController implements UserControllerInterface
         UserModel userExist = null;
 
         Map<String,Object> response = new HashMap<>();
+
+        try
+        {
+            userExist = userServiceInterface.getById(id);
+        }
+        catch(DataAccessException error)
+        {
+            response.put("Message", "DB doesn't exist yet!");
+            response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if(userExist == null)
+        {
+
+        }
+        return new ResponseEntity<>(userExist,HttpStatus.OK);
     }
     /*This line code might delete the user by id*/
     @Override
