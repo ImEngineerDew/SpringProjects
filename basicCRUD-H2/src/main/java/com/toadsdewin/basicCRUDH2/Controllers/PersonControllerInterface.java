@@ -12,6 +12,8 @@ public interface PersonControllerInterface
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id);
     @PostMapping(path = "/add")
     public ResponseEntity<Person> savePerson(@RequestBody Person person);
+    @PutMapping(path ="/add/{id}")
+    public Person upgradePerson(@RequestBody Person person, @RequestBody @PathVariable("id") Long id);
     @DeleteMapping(path="/{id}")
     public ResponseEntity<String>deleteById(@PathVariable("id") Long id);
     @RequestMapping(value = "/query", params = "phone")

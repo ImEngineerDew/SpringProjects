@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +46,12 @@ public class PersonController implements PersonControllerInterface
             error.getMessage();
             return null;
         }
+    }
+
+    @Override
+    public Person upgradePerson(Person person, Long id)
+    {
+        return this.personService.upgradePerson(person,id);
     }
     @Override
     public ResponseEntity<?> getUserById(@PathVariable("id")Long id) {

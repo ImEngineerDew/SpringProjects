@@ -80,7 +80,7 @@ public class UserController implements UserControllerInterface
     }
     /*This line code can find the user by id*/
     @Override
-    public Optional<UserModel> getUserById(Long id) {
+    public UserModel getUserById(Long id) {
         return this.userServiceInterface.getById(id);
     }
     /*This line code might delete the user by id*/

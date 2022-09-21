@@ -1,12 +1,10 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import javax.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.Optional;
+
 public interface UserControllerInterface
 {
     @PostMapping(path = "/add")
@@ -22,7 +20,7 @@ public interface UserControllerInterface
     @RequestMapping(value = "/query",params = "country")
     public ResponseEntity<ArrayList<UserModel>>getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")
-    public Optional<UserModel> getUserById(@PathVariable ("id")Long id);
+    public UserModel getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById (@PathVariable("id")Long id);
 }

@@ -7,7 +7,7 @@ public interface PersonServiceInterface
 {
     public ArrayList<Person> getAllUsers();
     public Person saveUser(Person user);
-    public Person upgradeUser(Person user,Long id);
+    public Person upgradePerson(Person person,Long id);
     public Person getById(Long id);
     public ArrayList<Person> findByEmail (String email);
     public ArrayList<Person> findByPhone(Long phone);

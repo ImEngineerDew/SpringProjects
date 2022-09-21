@@ -60,9 +60,9 @@ public class UserService implements UserServiceInterface
         return null;
     }
     @Override
-    public Optional<UserModel> getById(Long id)
+    public UserModel getById(Long id)
     {
-        return userRepository.findById(id);
+        return userRepository.findById(id).orElse(null);
     }
     @Override
     public ArrayList<UserModel> getByRol(String rol)
