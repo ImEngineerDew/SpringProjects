@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface UserServiceInterface {
     /**This method can get all the users from the DB**/
-    public ArrayList<UserModel>getUsers();
+    public ArrayList<UserModel> getUsers();
     /**This method can save each user for the DB**/
     public UserModel saveUser(UserModel user);
     /**This method can upgrade an existent user**/

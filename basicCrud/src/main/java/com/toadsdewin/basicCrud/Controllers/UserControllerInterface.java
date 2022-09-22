@@ -12,7 +12,7 @@ public interface UserControllerInterface
     @PutMapping(path = "/add/{id}")
     public UserModel upgradeUser(@Valid @RequestBody UserModel user, @Valid @PathVariable("id")Long id );
     @GetMapping(path = "/all")
-    public ResponseEntity<ArrayList<UserModel>> getAllUsers();
+    public ResponseEntity<?> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
     public ArrayList<UserModel> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")
