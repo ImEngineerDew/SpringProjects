@@ -16,7 +16,7 @@ public interface UserControllerInterface
     @RequestMapping(value ="/query",params = "career")
     public ArrayList<UserModel> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")
-    public ArrayList<UserModel> getRol(@RequestParam String rol);
+    public ResponseEntity<?> getRol(@RequestParam String rol);
     @RequestMapping(value = "/query",params = "country")
     public ResponseEntity<?> getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")

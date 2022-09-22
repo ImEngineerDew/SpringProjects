@@ -65,7 +65,7 @@ public class UserService implements UserServiceInterface
         return userRepository.findById(id).orElse(null);
     }
     @Override
-    public ArrayList<UserModel> getByRol(String rol)
+    public UserModel getByRol(String rol)
     {
         return userRepository.findByRol(rol);
     }

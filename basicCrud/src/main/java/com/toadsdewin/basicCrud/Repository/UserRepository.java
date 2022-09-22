@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel,Long> {
-    public ArrayList<UserModel> findByRol(String rol);
+    public UserModel findByRol(String rol);
     public ArrayList<UserModel> findByCareer(String career);
     public UserModel findByCountry(String country);
 }

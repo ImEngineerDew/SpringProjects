@@ -15,7 +15,7 @@ public interface UserServiceInterface {
     /**This method from the interface can get an user from a country**/
     public UserModel getByCountry(String country);
     /**This method from that interface can get a specific rol or charge from the company**/
-    public ArrayList<UserModel>getByRol(String rol);
+    public UserModel getByRol(String rol);
     /**This can get an user following the attribute career**/
     public ArrayList<UserModel>getByCareer(String career);
     /**This method can delete an user following the specific id**/

@@ -90,16 +90,27 @@ public class UserController implements UserControllerInterface
         return new ResponseEntity<>(userCountry,HttpStatus.FOUND);
     }
     @Override
-    public ArrayList<UserModel> getRol(String rol)
-    {
-        return this.userServiceInterface.getByRol(rol);
+    public ResponseEntity<?> getRol(String rol) {
+        UserModel userRol = null;
+        Map<String, Object> answer = new HashMap<>();
+
+        try {
+            userRol = this.userServiceInterface.getByRol(rol);
+        } catch (DataAccessException error) {
+            answer.put("Message", "DB doesn't exist yet!");
+            answer.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
+        }
+        if (userRol == null) {
+            answer.put("Message: ", "The rol: "+rol+", doesn't exist yet!");
+            return new ResponseEntity<>(answer, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userRol,HttpStatus.FOUND);
     }
     /*This line code can find the user by id*/
     @Override
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id)
     {
         UserModel userExist = null;
-
         Map<String,Object> response = new HashMap<>();
 
         try
