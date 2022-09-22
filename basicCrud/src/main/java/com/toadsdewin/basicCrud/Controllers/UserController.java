@@ -6,6 +6,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.xml.crypto.Data;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,10 +68,26 @@ public class UserController implements UserControllerInterface
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
-    @Override
-    public ArrayList<UserModel> getCountry(String country)
+    @RequestMapping(value = "/query",params = "country")
+    public ResponseEntity<?> getCountry(@RequestParam String country)
     {
-        return this.userServiceInterface.getByCountry(country);
+        UserModel userCountry = null;
+
+        Map<String,Object> answer = new HashMap<>();
+        try {
+            userCountry = this.userServiceInterface.getByCountry(country);
+        }
+        catch(DataAccessException error)
+        {
+            answer.put("Message", "DB doesn't exist yet!");
+            answer.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
+        }
+        if(userCountry==null)
+        {
+            answer.put("Message: ","The country doesn't exist yet!");
+            return new ResponseEntity<>(answer,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userCountry,HttpStatus.FOUND);
     }
     @Override
     public ArrayList<UserModel> getRol(String rol)
