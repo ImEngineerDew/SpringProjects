@@ -65,16 +65,10 @@ public class UserController implements UserControllerInterface
     public ArrayList<UserModel> getCareer(String career) {
         return this.userServiceInterface.getByCareer(career);
     }
-    public ResponseEntity<ArrayList<UserModel>> getCountry(String country) {
-        ArrayList<UserModel> nameCountry = null;
-        try {
-            nameCountry = this.userServiceInterface.getByCountry(country);
-        }
-        catch(Exception error)
-        {
-            error.getMessage();
-        }
-        return new ResponseEntity<>(nameCountry,HttpStatus.OK);
+    @Override
+    public ArrayList<UserModel> getCountry(String country)
+    {
+        return this.userServiceInterface.getByCountry(country);
     }
     @Override
     public ArrayList<UserModel> getRol(String rol)

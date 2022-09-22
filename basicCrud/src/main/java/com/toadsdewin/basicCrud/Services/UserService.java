@@ -69,8 +69,9 @@ public class UserService implements UserServiceInterface
     {
         return userRepository.findByRol(rol);
     }
+
     @Override
-    public ArrayList<UserModel>getByCountry(String country)
+    public ArrayList<UserModel> getByCountry(String country)
     {
         return userRepository.findByCountry(country);
     }
