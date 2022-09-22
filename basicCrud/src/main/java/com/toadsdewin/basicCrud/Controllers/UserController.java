@@ -84,9 +84,10 @@ public class UserController implements UserControllerInterface
         }
         if(userCountry==null)
         {
-            answer.put("Message: ","The country doesn't exist yet!");
+            answer.put("Message: ",country+", doesn't exist in the user list!");
             return new ResponseEntity<>(answer,HttpStatus.NOT_FOUND);
         }
+        answer.put("List of users from: ",country);
         return new ResponseEntity<>(userCountry,HttpStatus.FOUND);
     }
     @Override
@@ -104,6 +105,7 @@ public class UserController implements UserControllerInterface
             answer.put("Message: ", "The rol: "+rol+", doesn't exist yet!");
             return new ResponseEntity<>(answer, HttpStatus.NOT_FOUND);
         }
+        answer.put("List of users that contains the rol: ",rol);
         return new ResponseEntity<>(userRol,HttpStatus.FOUND);
     }
     /*This line code can find the user by id*/
