@@ -1,9 +1,12 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import javax.validation.Valid;
+
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 public interface UserControllerInterface
 {
@@ -16,9 +19,9 @@ public interface UserControllerInterface
     @RequestMapping(value ="/query",params = "career")
     public ArrayList<UserModel> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")
-    public ResponseEntity<?> getRol(@RequestParam String rol);
+    public ResponseEntity<UserModel> getRol(@RequestParam String rol);
     @RequestMapping(value = "/query",params = "country")
-    public ResponseEntity<?> getCountry(@RequestParam String country);
+    public ResponseEntity<ArrayList<UserModel>> getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")

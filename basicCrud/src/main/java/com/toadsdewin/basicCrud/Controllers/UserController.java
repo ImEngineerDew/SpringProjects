@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.xml.crypto.Data;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -69,42 +70,26 @@ public class UserController implements UserControllerInterface
         return this.userServiceInterface.getByCareer(career);
     }
     @RequestMapping(value = "/query",params = "country")
-    public ResponseEntity<?> getCountry(@RequestParam String country)
+    public ResponseEntity<ArrayList<UserModel>> getCountry(@RequestParam String country)
     {
-        UserModel userCountry = null;
+        ArrayList<UserModel> userCountry;
+        Map<String,String> answer = new HashMap<>();
 
-        Map<String,Object> answer = new HashMap<>();
-        try {
-            userCountry = this.userServiceInterface.getByCountry(country);
-        }
-        catch(DataAccessException error)
+        userCountry = this.userServiceInterface.getByCountry(country);
+
+        if(userCountry!=null)
         {
-            answer.put("Message", "DB doesn't exist yet!");
-            answer.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(userCountry,HttpStatus.OK);
         }
-        if(userCountry==null)
-        {
-            answer.put("Message: ",country+", doesn't exist in the user list!");
-            return new ResponseEntity<>(answer,HttpStatus.NOT_FOUND);
+        else {
+            answer.put("Message: ","Country not found");
+            return new ResponseEntity<>(userCountry, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(userCountry,HttpStatus.FOUND);
     }
     @Override
-    public ResponseEntity<?> getRol(String rol) {
-        UserModel userRol = null;
-        Map<String, Object> answer = new HashMap<>();
-
-        try {
-            userRol = this.userServiceInterface.getByRol(rol);
-        } catch (DataAccessException error) {
-            answer.put("Message", "DB doesn't exist yet!");
-            answer.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
-        }
-        if (userRol == null) {
-            answer.put("Message: ", "The rol: "+rol+", doesn't exist yet!");
-            return new ResponseEntity<>(answer, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(userRol,HttpStatus.FOUND);
+    public ResponseEntity<UserModel> getRol(String rol)
+    {
+       return null;
     }
     /*This line code can find the user by id*/
     @Override
