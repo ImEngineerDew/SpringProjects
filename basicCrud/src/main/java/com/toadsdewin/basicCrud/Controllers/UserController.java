@@ -77,9 +77,15 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.status(HttpStatus.OK).body(userCountry);
     }
     @Override
-    public ResponseEntity<UserModel> getRol(String rol)
+    public ResponseEntity<Object> getRol(String rol)
     {
-       return null;
+       UserModel userRol = this.userServiceInterface.getByRol(rol);
+
+       if(userRol==null)
+       {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The assigned rol doesn't exist in the list!");
+       }
+       return ResponseEntity.status(HttpStatus.OK).body(userRol);
     }
     /*This line code can find the user by id*/
     @Override
