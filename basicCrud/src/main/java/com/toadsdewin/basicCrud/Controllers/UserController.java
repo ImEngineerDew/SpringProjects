@@ -62,8 +62,15 @@ public class UserController implements UserControllerInterface
     }
     /*This line code can find the user by career */
     @Override
-    public ArrayList<UserModel> getCareer(String career) {
-        return this.userServiceInterface.getByCareer(career);
+    public ResponseEntity<Object> getCareer(String career)
+    {
+        UserModel userCareer = this.userServiceInterface.getByCareer(career);
+
+        if(userCareer==null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The career doesn't exist in the list!");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
     @RequestMapping(value = "/query",params = "country")
     public ResponseEntity<Object> getCountry(@RequestParam String country)

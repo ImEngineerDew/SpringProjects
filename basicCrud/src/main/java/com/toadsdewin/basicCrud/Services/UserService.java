@@ -77,7 +77,7 @@ public class UserService implements UserServiceInterface
     }
 
     @Override
-    public ArrayList<UserModel> getByCareer(String career) {
+    public UserModel getByCareer(String career) {
         return userRepository.findByCareer(career);
     }
 

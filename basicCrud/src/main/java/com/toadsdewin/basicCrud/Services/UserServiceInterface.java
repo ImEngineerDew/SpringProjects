@@ -17,7 +17,7 @@ public interface UserServiceInterface {
     /**This method from that interface can get a specific rol or charge from the company**/
     public UserModel getByRol(String rol);
     /**This can get an user following the attribute career**/
-    public ArrayList<UserModel>getByCareer(String career);
+    public UserModel getByCareer(String career);
     /**This method can delete an user following the specific id**/
     public boolean deleteUser(Long id);
 }
