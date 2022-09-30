@@ -68,11 +68,11 @@ public class UserController implements UserControllerInterface
     @RequestMapping(value = "/query",params = "country")
     public ResponseEntity<Object> getCountry(@RequestParam String country)
     {
-       UserModel userCountry  = this.userServiceInterface.getByCountry(country);
+        UserModel userCountry  = this.userServiceInterface.getByCountry(country);
 
         if(userCountry==null)
         {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Country doesn't exist!");
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't exist in the list!");
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCountry);
     }
