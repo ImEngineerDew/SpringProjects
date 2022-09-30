@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface UserRepository extends JpaRepository<UserModel,Long> {
     public UserModel findByRol(String rol);
     public ArrayList<UserModel> findByCareer(String career);
-    public ArrayList<UserModel> findByCountry(String country);
+    public UserModel findByCountry(String country);
 }

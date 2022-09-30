@@ -20,7 +20,7 @@ public interface UserControllerInterface
     @RequestMapping(value ="/query",params = "rol")
     public ResponseEntity<UserModel> getRol(@RequestParam String rol);
     @RequestMapping(value = "/query",params = "country")
-    public ResponseEntity<ArrayList<UserModel>> getCountry(@RequestParam String country);
+    public ResponseEntity<Object> getCountry(@RequestParam String country);
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getUserById(@PathVariable ("id")Long id);
     @DeleteMapping(path = "/{id}")

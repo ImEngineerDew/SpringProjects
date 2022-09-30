@@ -7,13 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.xml.crypto.Data;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/basicCRUD")
@@ -70,21 +66,15 @@ public class UserController implements UserControllerInterface
         return this.userServiceInterface.getByCareer(career);
     }
     @RequestMapping(value = "/query",params = "country")
-    public ResponseEntity<ArrayList<UserModel>> getCountry(@RequestParam String country)
+    public ResponseEntity<Object> getCountry(@RequestParam String country)
     {
-        ArrayList<UserModel> userCountry;
-        Map<String,String> answer = new HashMap<>();
+       UserModel userCountry  = this.userServiceInterface.getByCountry(country);
 
-        userCountry = this.userServiceInterface.getByCountry(country);
-
-        if(userCountry!=null)
+        if(userCountry==null)
         {
-            return new ResponseEntity<>(userCountry,HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Country doesn't exist!");
         }
-        else {
-            answer.put("Message: ","Country not found");
-            return new ResponseEntity<>(userCountry, HttpStatus.NOT_FOUND);
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(userCountry);
     }
     @Override
     public ResponseEntity<UserModel> getRol(String rol)
