@@ -42,10 +42,10 @@ public class UserController implements UserControllerInterface
     }
     /**UPGRADE METHOD OR PUT METHOD**/
     @Override
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserModel upgradeUser(UserModel user,Long id)
+    public ResponseEntity<UserModel> upgradeUser(UserModel user,Long id)
     {
-        return userServiceInterface.upgradeUser(user,id);
+        UserModel userUpgraded =  this.userServiceInterface.upgradeUser(user,id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
     @Override
     public ResponseEntity<ArrayList<UserModel>>getAllUsers()
@@ -72,7 +72,7 @@ public class UserController implements UserControllerInterface
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
-    @RequestMapping(value = "/query",params = "country")
+    @Override
     public ResponseEntity<Object> getCountry(@RequestParam String country)
     {
         UserModel userCountry  = this.userServiceInterface.getByCountry(country);
