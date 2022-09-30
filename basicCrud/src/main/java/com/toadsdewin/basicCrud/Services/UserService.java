@@ -13,7 +13,8 @@ public class UserService implements UserServiceInterface
     @Autowired
     UserRepository userRepository;  /**Call the UserRepository class**/
     @Override
-    public ArrayList<UserModel> getUsers() {
+    public ArrayList<UserModel> getUsers()
+    {
         return (ArrayList<UserModel>) userRepository.findAll();
     }
     @Override
@@ -69,13 +70,11 @@ public class UserService implements UserServiceInterface
     {
         return userRepository.findByRol(rol);
     }
-
     @Override
     public UserModel getByCountry(String country)
     {
         return userRepository.findByCountry(country);
     }
-
     @Override
     public UserModel getByCareer(String career) {
         return userRepository.findByCareer(career);
