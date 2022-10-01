@@ -4,8 +4,8 @@ import com.toadsdewin.basicCRUDH2.Repositories.PersonInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class PersonService implements PersonServiceInterface
@@ -63,15 +63,15 @@ public class PersonService implements PersonServiceInterface
         return personInterface.findById(id).orElse(null);
     }
     @Override
-    public ArrayList<Person> findByEmail(String email) {
+    public List<Person> findByEmail(String email) {
         return personInterface.findByEmail(email);
     }
     @Override
-    public ArrayList<Person> findByPhone(Long phone) {
+    public List<Person> findByPhone(Long phone) {
         return personInterface.findByPhone(phone);
     }
     @Override
-    public ArrayList<Person> findByCountry(String country)
+    public List<Person> findByCountry(String country)
     {
         return personInterface.findByCountry(country);
     }

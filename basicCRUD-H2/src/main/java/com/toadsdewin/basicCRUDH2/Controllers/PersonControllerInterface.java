@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface PersonControllerInterface
 {
@@ -19,10 +20,10 @@ public interface PersonControllerInterface
     @DeleteMapping(path="/{id}")
     public ResponseEntity<String>deleteById(@PathVariable("id") Long id);
     @RequestMapping(value = "/query", params = "phone")
-    public ArrayList<Person> findByPhone(@RequestParam Long phone);
+    public List<Person> findByPhone(@RequestParam Long phone);
     @RequestMapping(value = "/query", params = "email")
-    public ArrayList<Person> findByEmail(@RequestParam String email);
+    public List<Person> findByEmail(@RequestParam String email);
     @RequestMapping(value = "/query", params= "country")
-    public ResponseEntity<ArrayList<Person>> findByCountry(@RequestParam String country);
+    public ResponseEntity<List<Person>> findByCountry(@RequestParam String country);
 
 }

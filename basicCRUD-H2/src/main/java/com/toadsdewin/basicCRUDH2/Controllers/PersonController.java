@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -101,19 +102,19 @@ public class PersonController implements PersonControllerInterface
         }
     }
     @Override
-    public ArrayList<Person> findByPhone(Long phone)
+    public List<Person> findByPhone(Long phone)
     {
         return this.personService.findByPhone(phone);
     }
     @Override
-    public ArrayList<Person> findByEmail(String email)
+    public List<Person> findByEmail(String email)
     {
         return this.personService.findByEmail(email);
     }
     @Override
-    public ResponseEntity<ArrayList<Person>> findByCountry(String country)
+    public ResponseEntity<List<Person>> findByCountry(String country)
     {
-        ArrayList<Person> countryQuery = null;
+       List<Person> countryQuery = null;
 
         try {
             countryQuery = this.personService.findByCountry(country);
