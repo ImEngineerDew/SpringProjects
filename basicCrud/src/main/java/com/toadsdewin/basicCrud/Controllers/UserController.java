@@ -47,6 +47,7 @@ public class UserController implements UserControllerInterface
         UserModel userUpgraded =  this.userServiceInterface.upgradeUser(user,id);
         return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
+    /**Checking if the database exists or not**/
     @Override
     public ResponseEntity<?>getAllUsers()
     {
@@ -60,19 +61,8 @@ public class UserController implements UserControllerInterface
         else {
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
         }
-        /**
-        try {
-            allUsers = this.userServiceInterface.getUsers();
-        }
-        catch (Exception error)
-        {
-            error.getMessage();
-            return new ResponseEntity<>(allUsers,HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
-         **/
     }
-    /*This line code can find the user by career */
+    /**This codeline might get a specific career from the database**/
     @Override
     public ResponseEntity<Object> getCareer(String career)
     {
@@ -84,6 +74,7 @@ public class UserController implements UserControllerInterface
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
+    /**This codeline can get a specific country from the database**/
     @Override
     public ResponseEntity<Object> getCountry(String country)
     {
@@ -95,6 +86,7 @@ public class UserController implements UserControllerInterface
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCountry);
     }
+    /**This codeline can get a rol on this db**/
     @Override
     public ResponseEntity<Object> getRol(String rol)
     {
@@ -106,9 +98,9 @@ public class UserController implements UserControllerInterface
        }
        return ResponseEntity.status(HttpStatus.OK).body(userRol);
     }
-    /*This line code can find the user by id*/
+    /**This line code can find the user by id**/
     @Override
-    public ResponseEntity<?> getUserById(@PathVariable("id") Long id)
+    public ResponseEntity<?> getUserById(Long id)
     {
         UserModel userExist = null;
         Map<String,Object> response = new HashMap<>();
@@ -123,7 +115,6 @@ public class UserController implements UserControllerInterface
             response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
         if(userExist == null)
         {
             response.put("Message", "The person ID: ".concat(id.toString().concat(" doesn't exist in the database!")));
@@ -131,7 +122,7 @@ public class UserController implements UserControllerInterface
         }
         return new ResponseEntity<>(userExist,HttpStatus.OK);
     }
-    /*This line code might delete the user by id*/
+    /**This line code might delete the user by id**/
     @Override
     public ResponseEntity<String> deleteById(Long id)
     {
