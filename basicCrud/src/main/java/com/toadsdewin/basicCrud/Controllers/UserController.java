@@ -48,17 +48,15 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
     @Override
-    public ResponseEntity<ArrayList<UserModel>>getAllUsers()
+    public ResponseEntity<Object>getAllUsers()
     {
-        ArrayList<UserModel> allUsers = null;
-        try {
-            allUsers = this.userServiceInterface.getUsers();
-        }
-        catch (Exception error)
+        ArrayList<UserModel> allUsers = this.userServiceInterface.getUsers();
+
+        if(allUsers==null)
         {
-            error.getMessage();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to show here!");
         }
-        return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
+        return ResponseEntity.status(HttpStatus.OK).body(allUsers);
     }
     /*This line code can find the user by career */
     @Override
@@ -73,7 +71,7 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
     @Override
-    public ResponseEntity<Object> getCountry(@RequestParam String country)
+    public ResponseEntity<Object> getCountry(String country)
     {
         UserModel userCountry  = this.userServiceInterface.getByCountry(country);
 
