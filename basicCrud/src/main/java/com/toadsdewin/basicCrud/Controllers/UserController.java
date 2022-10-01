@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -66,7 +67,7 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<Object> getCareer(String career)
     {
-        UserModel userCareer = this.userServiceInterface.getByCareer(career);
+        List<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
 
         if(userCareer==null)
         {
@@ -78,7 +79,7 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<Object> getCountry(String country)
     {
-        UserModel userCountry  = this.userServiceInterface.getByCountry(country);
+        List<UserModel> userCountry  = this.userServiceInterface.getByCountry(country);
 
         if(userCountry==null)
         {
@@ -90,7 +91,7 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<Object> getRol(String rol)
     {
-       UserModel userRol = this.userServiceInterface.getByRol(rol);
+       List<UserModel> userRol = this.userServiceInterface.getByRol(rol);
 
        if(userRol==null)
        {

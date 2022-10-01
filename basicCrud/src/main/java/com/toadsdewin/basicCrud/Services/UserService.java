@@ -4,6 +4,7 @@ import com.toadsdewin.basicCrud.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -67,17 +68,17 @@ public class UserService implements UserServiceInterface
         return userRepository.findById(id).orElse(null);
     }
     @Override
-    public UserModel getByRol(String rol)
+    public List<UserModel> getByRol(String rol)
     {
         return userRepository.findByRol(rol);
     }
     @Override
-    public UserModel getByCountry(String country)
+    public List<UserModel> getByCountry(String country)
     {
         return userRepository.findByCountry(country);
     }
     @Override
-    public UserModel getByCareer(String career) {
+    public List<UserModel> getByCareer(String career) {
         return userRepository.findByCareer(career);
     }
 
