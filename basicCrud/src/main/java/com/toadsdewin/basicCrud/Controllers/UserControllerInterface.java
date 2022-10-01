@@ -14,7 +14,7 @@ public interface UserControllerInterface
     @PutMapping(path = "/add/{id}")
     public ResponseEntity<UserModel> upgradeUser(@Valid @RequestBody UserModel user, @Valid @PathVariable("id")Long id );
     @GetMapping(path = "/all")
-    public ResponseEntity<Object> getAllUsers();
+    public ResponseEntity<?> getAllUsers();
     @RequestMapping(value ="/query",params = "career")
     public ResponseEntity<Object> getCareer(@RequestParam String career);
     @RequestMapping(value ="/query",params = "rol")

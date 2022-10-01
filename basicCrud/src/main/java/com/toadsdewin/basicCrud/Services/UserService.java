@@ -5,17 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class UserService implements UserServiceInterface
 {
     @Autowired
-    UserRepository userRepository;  /**Call the UserRepository class**/
+    UserRepository userRepository;  /**
+ * Call the UserRepository class
+ **/
     @Override
     public ArrayList<UserModel> getUsers()
     {
-        return (ArrayList<UserModel>) userRepository.findAll();
+        return (ArrayList<UserModel>) this.userRepository.findAll();
     }
     @Override
     public UserModel saveUser(UserModel user)

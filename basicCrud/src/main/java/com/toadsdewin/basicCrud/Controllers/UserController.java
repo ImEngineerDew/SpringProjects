@@ -48,15 +48,17 @@ public class UserController implements UserControllerInterface
         return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
     @Override
-    public ResponseEntity<Object>getAllUsers()
+    public ResponseEntity<ArrayList<UserModel>>getAllUsers()
     {
-        ArrayList<UserModel> allUsers = this.userServiceInterface.getUsers();
-
-        if(allUsers==null)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to show here!");
+        ArrayList<UserModel> allUsers = null;
+        try {
+            allUsers = this.userServiceInterface.getUsers();
         }
-        return ResponseEntity.status(HttpStatus.OK).body(allUsers);
+        catch (Exception error)
+        {
+            error.getMessage();
+        }
+        return new ResponseEntity<>(allUsers,HttpStatus.FOUND);
     }
     /*This line code can find the user by career */
     @Override
