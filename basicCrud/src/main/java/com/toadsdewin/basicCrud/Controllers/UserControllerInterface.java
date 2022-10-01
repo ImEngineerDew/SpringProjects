@@ -1,11 +1,8 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import javax.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-
 
 public interface UserControllerInterface
 {

@@ -1,5 +1,4 @@
 package com.toadsdewin.basicCrud.Models;
-
 import javax.persistence.*;
 
 @Entity

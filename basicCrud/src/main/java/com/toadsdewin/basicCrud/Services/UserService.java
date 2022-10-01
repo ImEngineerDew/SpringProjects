@@ -1,6 +1,7 @@
 package com.toadsdewin.basicCrud.Services;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Repository.UserRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -11,16 +12,14 @@ import java.util.Objects;
 public class UserService implements UserServiceInterface
 {
     @Autowired
-    UserRepository userRepository;  /**
- * Call the UserRepository class
- **/
+    UserRepository userRepository;  /*** Call the UserRepository class ***/
     @Override
     public ArrayList<UserModel> getUsers()
     {
         return (ArrayList<UserModel>) this.userRepository.findAll();
     }
     @Override
-    public UserModel saveUser(UserModel user)
+    public UserModel saveUser(@NotNull UserModel user)
     {
         if(user.getId() == null)
         {
