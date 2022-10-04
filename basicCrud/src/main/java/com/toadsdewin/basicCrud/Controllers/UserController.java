@@ -87,12 +87,16 @@ public class UserController implements UserControllerInterface
     public ResponseEntity<Object> getCareer(String career)
     {
         List<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
+        boolean checkCareer = userCareer.isEmpty();
 
-        if(userCareer==null)
+        if(checkCareer==false)
         {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The career doesn't exist in the list!");
+            return ResponseEntity.status(HttpStatus.OK).body(userCareer);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(userCareer);
+        else
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Career doesn't exist in the list!");
+        }
     }
     /**This codeline can get a rol on this db**/
     @Override
