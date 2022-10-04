@@ -1,6 +1,7 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -56,41 +57,53 @@ public class UserController implements UserControllerInterface
 
         if(checkedUsers==true)
         {
+            System.out.println("The list is empty: ?"+checkedUsers);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to found here!");
         }
         else {
+            System.out.println(checkedUsers);
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
         }
     }
     /**This codeline can get a specific country from the database**/
     @Override
-    public ResponseEntity<Object> getCountry(String country) {
-        ArrayList<UserModel> userCountry = this.userServiceInterface.getByCountry(country);
-        boolean checkCountry = userCountry.contains(country);
+    public ResponseEntity<Object> getCountry(String country)
+    {
+        List<UserModel> userCountry  = this.userServiceInterface.getByCountry(country);
+        boolean checkCountry = userCountry.isEmpty();
 
-        if(checkCountry==true)
-        {
+        if(checkCountry== false) {
+            System.out.println(country+": "+checkCountry);
             return ResponseEntity.status(HttpStatus.OK).body(userCountry);
         }
-        return null;
+        else {
+            System.out.println(country+": "+checkCountry);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't in the list!");
+        }
     }
     /**This codeline might get a specific career from the database**/
     @Override
     public ResponseEntity<Object> getCareer(String career)
     {
-        ArrayList<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
+        List<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
+        boolean checkCareer = userCareer.isEmpty();
 
-        if(userCareer==null)
+        if(checkCareer==false)
         {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The career doesn't exist in the list!");
+            System.out.println(career+": "+checkCareer);
+            return ResponseEntity.status(HttpStatus.OK).body(userCareer);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(userCareer);
+        else
+        {
+            System.out.println(career+": "+checkCareer);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Career doesn't exist in the list!");
+        }
     }
     /**This codeline can get a rol on this db**/
     @Override
     public ResponseEntity<Object> getRol(String rol)
     {
-       ArrayList<UserModel> userRol = this.userServiceInterface.getByRol(rol);
+       List<UserModel> userRol = this.userServiceInterface.getByRol(rol);
 
        if(userRol==null)
        {
@@ -104,7 +117,6 @@ public class UserController implements UserControllerInterface
     {
         UserModel userExist = null;
         Map<String,Object> response = new HashMap<>();
-
         try
         {
             userExist = userServiceInterface.getById(id);

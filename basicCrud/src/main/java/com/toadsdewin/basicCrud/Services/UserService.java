@@ -67,17 +67,18 @@ public class UserService implements UserServiceInterface
         return userRepository.findById(id).orElse(null);
     }
     @Override
-    public ArrayList<UserModel> getByRol(String rol)
+    public List<UserModel> getByRol(String rol)
     {
         return userRepository.findByRol(rol);
     }
     @Override
-    public ArrayList<UserModel> getByCountry(String country)
+    public List<UserModel> getByCountry(String country)
     {
         return userRepository.findByCountry(country);
     }
     @Override
-    public ArrayList<UserModel> getByCareer(String career) {
+    public List<UserModel> getByCareer(String career)
+    {
         return userRepository.findByCareer(career);
     }
 
