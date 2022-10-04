@@ -1,6 +1,7 @@
 package com.toadsdewin.basicCrud.Controllers;
 import com.toadsdewin.basicCrud.Models.UserModel;
 import com.toadsdewin.basicCrud.Services.UserServiceInterface;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -56,17 +58,35 @@ public class UserController implements UserControllerInterface
 
         if(checkedUsers==true)
         {
+            System.out.println(checkedUsers);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to found here!");
         }
         else {
+            System.out.println(checkedUsers);
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
+        }
+    }
+    /**This codeline can get a specific country from the database**/
+    @Override
+    public ResponseEntity<Object> getCountry(String country)
+    {
+        List<UserModel> userCountry  = this.userServiceInterface.getByCountry(country);
+        boolean checkCountry = userCountry.isEmpty();
+
+        if(checkCountry== false) {
+            System.out.println(checkCountry + "" + country);
+            return ResponseEntity.status(HttpStatus.OK).body(userCountry);
+        }
+        else {
+            System.out.println(checkCountry + "" + country);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't in the list!");
         }
     }
     /**This codeline might get a specific career from the database**/
     @Override
     public ResponseEntity<Object> getCareer(String career)
     {
-        UserModel userCareer = this.userServiceInterface.getByCareer(career);
+        List<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
 
         if(userCareer==null)
         {
@@ -74,23 +94,11 @@ public class UserController implements UserControllerInterface
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
-    /**This codeline can get a specific country from the database**/
-    @Override
-    public ResponseEntity<Object> getCountry(String country)
-    {
-        UserModel userCountry  = this.userServiceInterface.getByCountry(country);
-
-        if(userCountry==null)
-        {
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't exist in the list!");
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(userCountry);
-    }
     /**This codeline can get a rol on this db**/
     @Override
     public ResponseEntity<Object> getRol(String rol)
     {
-       UserModel userRol = this.userServiceInterface.getByRol(rol);
+       List<UserModel> userRol = this.userServiceInterface.getByRol(rol);
 
        if(userRol==null)
        {
