@@ -104,12 +104,16 @@ public class UserController implements UserControllerInterface
     public ResponseEntity<Object> getRol(String rol)
     {
        List<UserModel> userRol = this.userServiceInterface.getByRol(rol);
+       boolean checkedRol = userRol.isEmpty();
 
-       if(userRol==null)
+       if(checkedRol==false)
        {
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The assigned rol doesn't exist in the list!");
+           return ResponseEntity.status(HttpStatus.OK).body(userRol);
        }
-       return ResponseEntity.status(HttpStatus.OK).body(userRol);
+       else
+       {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rol not found!");
+       }
     }
     /**This line code can find the user by id**/
     @Override
