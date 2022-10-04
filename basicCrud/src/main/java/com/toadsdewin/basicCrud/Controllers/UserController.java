@@ -74,11 +74,11 @@ public class UserController implements UserControllerInterface
         boolean checkCountry = userCountry.isEmpty();
 
         if(checkCountry== false) {
-            System.out.println(checkCountry + "" + country);
+            System.out.println(country+": "+checkCountry);
             return ResponseEntity.status(HttpStatus.OK).body(userCountry);
         }
         else {
-            System.out.println(checkCountry + "" + country);
+            System.out.println(country+": "+checkCountry);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't in the list!");
         }
     }
@@ -91,10 +91,12 @@ public class UserController implements UserControllerInterface
 
         if(checkCareer==false)
         {
+            System.out.println(career+": "+checkCareer);
             return ResponseEntity.status(HttpStatus.OK).body(userCareer);
         }
         else
         {
+            System.out.println(career+": "+checkCareer);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Career doesn't exist in the list!");
         }
     }
