@@ -62,11 +62,23 @@ public class UserController implements UserControllerInterface
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
         }
     }
+    /**This codeline can get a specific country from the database**/
+    @Override
+    public ResponseEntity<Object> getCountry(String country) {
+        ArrayList<UserModel> userCountry = this.userServiceInterface.getByCountry(country);
+        boolean checkCountry = userCountry.contains(country);
+
+        if(checkCountry==true)
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(userCountry);
+        }
+        return null;
+    }
     /**This codeline might get a specific career from the database**/
     @Override
     public ResponseEntity<Object> getCareer(String career)
     {
-        List<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
+        ArrayList<UserModel> userCareer = this.userServiceInterface.getByCareer(career);
 
         if(userCareer==null)
         {
@@ -74,25 +86,11 @@ public class UserController implements UserControllerInterface
         }
         return ResponseEntity.status(HttpStatus.OK).body(userCareer);
     }
-    /**This codeline can get a specific country from the database**/
-    @Override
-    public ResponseEntity<Object> getCountry(String country)
-    {
-        List<UserModel> userCountry  = this.userServiceInterface.getByCountry(country);
-
-        if(userCountry.contains(userCountry))
-        {
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't exist in the list!");
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.OK).body(userCountry);
-        }
-    }
     /**This codeline can get a rol on this db**/
     @Override
     public ResponseEntity<Object> getRol(String rol)
     {
-       List<UserModel> userRol = this.userServiceInterface.getByRol(rol);
+       ArrayList<UserModel> userRol = this.userServiceInterface.getByRol(rol);
 
        if(userRol==null)
        {
