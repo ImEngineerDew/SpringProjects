@@ -80,11 +80,13 @@ public class UserController implements UserControllerInterface
     {
         List<UserModel> userCountry  = this.userServiceInterface.getByCountry(country);
 
-        if(userCountry==null)
+        if(userCountry.contains(userCountry))
         {
            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country doesn't exist in the list!");
         }
-        return ResponseEntity.status(HttpStatus.OK).body(userCountry);
+        else {
+            return ResponseEntity.status(HttpStatus.OK).body(userCountry);
+        }
     }
     /**This codeline can get a rol on this db**/
     @Override
