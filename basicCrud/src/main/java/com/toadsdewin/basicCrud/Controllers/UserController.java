@@ -58,7 +58,7 @@ public class UserController implements UserControllerInterface
 
         if(checkedUsers==true)
         {
-            System.out.println(checkedUsers);
+            System.out.println("The list is empty: ?"+checkedUsers);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to found here!");
         }
         else {
