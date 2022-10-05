@@ -81,7 +81,6 @@ public class UserService implements UserServiceInterface
     {
         return userRepository.findByCareer(career);
     }
-
     @Override
     public boolean deleteUser(Long id) {
         try
