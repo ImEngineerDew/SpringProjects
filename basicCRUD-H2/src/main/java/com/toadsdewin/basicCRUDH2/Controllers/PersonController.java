@@ -25,7 +25,7 @@ public class PersonController implements PersonControllerInterface
         return new ResponseEntity<>("Prueba superada",HttpStatus.OK);
     }
     @Override
-    public ResponseEntity<ArrayList<Person>> getUsers()
+    public ResponseEntity<?> getUsers()
     {
         ArrayList<Person> userFindAll;
         try
@@ -35,7 +35,7 @@ public class PersonController implements PersonControllerInterface
             if (userFindAll.isEmpty())
             {
                 System.out.println("Doesn't exist users yet!");
-                return new ResponseEntity<>(userFindAll,HttpStatus.NOT_FOUND);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doesn't exist user yet");
             }
             else
             {
@@ -48,7 +48,6 @@ public class PersonController implements PersonControllerInterface
             return null;
         }
     }
-
     @Override
     public Person upgradePerson(Person person, Long id)
     {

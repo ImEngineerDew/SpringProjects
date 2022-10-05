@@ -10,7 +10,7 @@ import java.util.List;
 public interface PersonControllerInterface
 {
     @GetMapping(path = "/all")
-    public ResponseEntity<ArrayList<Person>> getUsers();
+    public ResponseEntity<?> getUsers();
     @GetMapping(path="/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id);
     @PostMapping(path = "/add")
