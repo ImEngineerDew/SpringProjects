@@ -114,20 +114,16 @@ public class PersonController implements PersonControllerInterface
     @Override
     public ResponseEntity<Object> findByCountry(String country)
     {
-       List<Person> countryQuery = null;
+       List<Person> countryAvailable = this.personService.findByCountry(country);
+       boolean checkedCountry = countryAvailable.isEmpty();
 
-        try {
-            countryQuery = this.personService.findByCountry(country);
-        }
-        catch(DataAccessException error)
-        {
-            error.getMessage();
-        }
-        if(countryQuery==null)
-        {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(HttpStatus.FOUND);
-
+       if(checkedCountry==true)
+       {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country not found in the list!");
+       }
+       else
+       {
+           return ResponseEntity.status(HttpStatus.OK).body(countryAvailable);
+       }
     }
 }
