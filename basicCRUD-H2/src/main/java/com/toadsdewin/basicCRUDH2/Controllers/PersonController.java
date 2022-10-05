@@ -112,7 +112,7 @@ public class PersonController implements PersonControllerInterface
         return this.personService.findByEmail(email);
     }
     @Override
-    public ResponseEntity<List<Person>> findByCountry(String country)
+    public ResponseEntity<Object> findByCountry(String country)
     {
        List<Person> countryQuery = null;
 
