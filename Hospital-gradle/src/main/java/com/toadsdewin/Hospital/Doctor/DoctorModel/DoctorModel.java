@@ -14,11 +14,22 @@ public class DoctorModel
     public String name;
     public String surname;
     public String specializationType;
+
+    public String countryOfOrigin;
     public Integer wages;
 
     public DoctorModel()
     {
         //Empty constructor
+    }
+    public DoctorModel(Long id,String name, String surname, String countryOfOrigin, String specializationType, Integer wages)
+    {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.countryOfOrigin = countryOfOrigin;
+        this.specializationType = specializationType;
+        this.wages = wages;
     }
 
     public Long getId() {
@@ -59,5 +70,13 @@ public class DoctorModel
 
     public void setWages(Integer wages) {
         this.wages = wages;
+    }
+
+    public String getCountryOfOrigin() {
+        return countryOfOrigin;
+    }
+
+    public void setCountryOfOrigin(String countryOfOrigin) {
+        this.countryOfOrigin = countryOfOrigin;
     }
 }

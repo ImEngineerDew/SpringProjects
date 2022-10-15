@@ -7,4 +7,7 @@ public interface DoctorControllerInterface
     @GetMapping(path="/")
     ResponseEntity<String> answerPage();
 
+    @GetMapping(path = "all")
+    ResponseEntity<?> getAllDoctors();
+
 }
