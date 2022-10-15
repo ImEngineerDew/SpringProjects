@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface DoctorRepositoryInterface extends JpaRepository<DoctorModel,Long>
 {
-    ArrayList<DoctorModel> findBySpecialization(String specialization);
+    public List<DoctorModel> findBySpecialization(String specialization);
 }

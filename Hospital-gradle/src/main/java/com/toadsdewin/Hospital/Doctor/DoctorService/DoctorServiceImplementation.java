@@ -14,7 +14,7 @@ public class DoctorServiceImplementation implements DoctorServiceInterface
     @Override
     public ArrayList<DoctorModel> getDoctors()
     {
-        return (ArrayList<DoctorModel>) this.doctorRepository.findAll();
+        return (ArrayList<DoctorModel>) doctorRepository.findAll();
     }
     @Override
     public DoctorModel saveDoctor(DoctorModel doctor) {
@@ -26,10 +26,5 @@ public class DoctorServiceImplementation implements DoctorServiceInterface
         {
             return null;
         }
-    }
-    @Override
-    public ArrayList<DoctorModel> getSpecialization(String specialization)
-    {
-        return doctorRepository.findBySpecialization(specialization);
     }
 }

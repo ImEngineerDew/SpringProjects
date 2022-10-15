@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/hospital/doctor")
@@ -41,10 +42,5 @@ public class DoctorController implements  DoctorControllerInterface
             error.getMessage();
         }
         return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);
-    }
-    @Override
-    public ResponseEntity<Object>getSpecialization(String specialization)
-    {
-        return null;
     }
 }
