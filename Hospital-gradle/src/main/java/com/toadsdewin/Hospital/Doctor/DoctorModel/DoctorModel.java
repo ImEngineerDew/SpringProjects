@@ -1,4 +1,4 @@
-package com.toadsdewin.Hospital.DoctorModel;
+package com.toadsdewin.Hospital.Doctor.DoctorModel;
 
 import javax.persistence.*;
 
