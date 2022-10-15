@@ -1,7 +1,4 @@
 package com.toadsdewin.Hospital.Doctor.DoctorModel;
-
-import com.toadsdewin.Hospital.Patient.PatientModel;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,20 +13,10 @@ public class DoctorModel
     private String name;
     private String surname;
     private String specializationType;
-
     private String countryOfOrigin;
     private Integer wages;
-    private PatientModel patient;
 
-    public PatientModel getPatient() {
-        return patient;
-    }
-
-    public void setPatient(PatientModel patient) {
-        this.patient = patient;
-    }
-
-    public DoctorModel()
+     public DoctorModel()
     {
         //Empty constructor
     }
