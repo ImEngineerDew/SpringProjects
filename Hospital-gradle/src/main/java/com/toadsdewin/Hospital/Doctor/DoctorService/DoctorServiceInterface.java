@@ -7,5 +7,5 @@ public interface DoctorServiceInterface
 {
     ArrayList<DoctorModel> getDoctors();
     DoctorModel saveDoctor(DoctorModel doctor);
-    List<DoctorModel> getSpecialization(String specializtion);
+    List<DoctorModel> getSpecialization(String specialization);
 }

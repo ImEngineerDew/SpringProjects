@@ -41,6 +41,20 @@ public class DoctorController implements  DoctorControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);
+        return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);   }
+
+    @Override
+    public ResponseEntity<Object> getBySpecialization(String specialization) {
+        List<DoctorModel> doctorSpecialization = this.doctorService.getSpecialization(specialization);
+        boolean isAvailable = doctorSpecialization.isEmpty();
+
+        if(!isAvailable)
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(doctorSpecialization);
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Specialization doesn't found!");
+        }
     }
 }

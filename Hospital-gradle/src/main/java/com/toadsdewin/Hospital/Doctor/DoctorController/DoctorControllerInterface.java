@@ -13,6 +13,8 @@ public interface DoctorControllerInterface
     ResponseEntity<?> getAllDoctors();
     @PostMapping(path = "/add")
     ResponseEntity<DoctorModel>saveDoctorInfo(@Valid @RequestBody DoctorModel doctor);
+    @RequestMapping(value ="/query",params = "specialization")
+    ResponseEntity<Object>getBySpecialization(@RequestParam String specialization);
 
 
 }

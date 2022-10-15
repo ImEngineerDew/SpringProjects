@@ -4,6 +4,7 @@ import com.toadsdewin.Hospital.Doctor.DoctorRepository.DoctorRepositoryInterface
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DoctorServiceImplementation implements DoctorServiceInterface
@@ -26,5 +27,9 @@ public class DoctorServiceImplementation implements DoctorServiceInterface
         {
             return null;
         }
+    }
+    @Override
+    public List<DoctorModel> getSpecialization(String specialization) {
+        return doctorRepository.findBySpecialization(specialization);
     }
 }

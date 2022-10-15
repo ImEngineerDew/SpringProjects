@@ -11,18 +11,18 @@ public class DoctorModel extends PersonModel
     @Column (name= "Id",unique = true, nullable = false)
     private Long id;
     @Column(nullable = false,length = 255)
-    private String specializationType;
+    private String specialization;
     @Column (unique = true, nullable = false)
     private Integer wages;
 
     public DoctorModel() {
 
     }
-    public DoctorModel(Long id, String specializationType, Integer wages)
+    public DoctorModel(Long id, String specialization, Integer wages)
     {
         super();
         this.id = id;
-        this.specializationType = specializationType;
+        this.specialization = specialization;
         this.wages = wages;
     }
 
@@ -30,8 +30,8 @@ public class DoctorModel extends PersonModel
     public Long getId() {
         return id;
     }
-    public String getSpecializationType() {
-        return specializationType;
+    public String getSpecialization() {
+        return specialization;
     }
     public Integer getWages() {
         return wages;
@@ -40,7 +40,7 @@ public class DoctorModel extends PersonModel
         this.id = id;
     }
     public void setSpecializationType(String specializationType) {
-        this.specializationType = specializationType;
+        this.specialization = specializationType;
     }
     public void setWages(Integer wages) {
         this.wages = wages;
