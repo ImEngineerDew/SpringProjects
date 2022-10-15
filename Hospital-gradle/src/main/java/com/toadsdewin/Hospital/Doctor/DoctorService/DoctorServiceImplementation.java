@@ -27,4 +27,9 @@ public class DoctorServiceImplementation implements DoctorServiceInterface
             return null;
         }
     }
+    @Override
+    public ArrayList<DoctorModel> getSpecialization(String specialization)
+    {
+        return doctorRepository.findBySpecialization(specialization);
+    }
 }

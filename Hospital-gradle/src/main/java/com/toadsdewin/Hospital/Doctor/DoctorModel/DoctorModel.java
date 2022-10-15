@@ -10,9 +10,9 @@ public class DoctorModel extends PersonModel
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name= "Id",unique = true, nullable = false)
     private Long id;
-    @Column(name= "Especializacion",nullable = false,length = 255)
+    @Column(nullable = false,length = 255)
     private String specializationType;
-    @Column (name = "Salario",unique = true, nullable = false)
+    @Column (unique = true, nullable = false)
     private Integer wages;
 
     public DoctorModel() {

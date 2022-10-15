@@ -42,4 +42,9 @@ public class DoctorController implements  DoctorControllerInterface
         }
         return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);
     }
+    @Override
+    public ResponseEntity<Object>getSpecialization(String specialization)
+    {
+        return null;
+    }
 }
