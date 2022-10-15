@@ -1,5 +1,7 @@
 package com.toadsdewin.Hospital.Doctor.DoctorModel;
 
+import com.toadsdewin.Hospital.Patient.PatientModel;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,14 +11,23 @@ public class DoctorModel
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (unique = true, nullable = false)
-    public Long id;
+    private Long id;
 
-    public String name;
-    public String surname;
-    public String specializationType;
+    private String name;
+    private String surname;
+    private String specializationType;
 
-    public String countryOfOrigin;
-    public Integer wages;
+    private String countryOfOrigin;
+    private Integer wages;
+    private PatientModel patient;
+
+    public PatientModel getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientModel patient) {
+        this.patient = patient;
+    }
 
     public DoctorModel()
     {
