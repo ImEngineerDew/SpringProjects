@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/doctor")
-public class DoctorController
+public class DoctorController implements  DoctorControllerInterface
 {
-    @GetMapping(path = "/")
+    @Override
     public ResponseEntity<String> answerPage()
     {
         return ResponseEntity.ok("The webpage has been loaded");
