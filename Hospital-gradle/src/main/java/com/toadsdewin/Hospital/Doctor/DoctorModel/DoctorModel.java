@@ -15,12 +15,13 @@ public class DoctorModel extends PersonModel
     @Column (name = "Salario",unique = true, nullable = false)
     private Integer wages;
 
-    public DoctorModel() {
-
-    }
-    public DoctorModel(Long id, String specialization, Integer wages)
+    public DoctorModel()
     {
         super();
+    }
+    public DoctorModel(String name, String surname, String countryOfOrigin, Integer age, Long id, String specialization, Integer wages)
+    {
+        super(name,surname,countryOfOrigin,age);
         this.id = id;
         this.specialization = specialization;
         this.wages = wages;
