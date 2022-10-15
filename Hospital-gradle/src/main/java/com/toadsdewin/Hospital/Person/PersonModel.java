@@ -1,30 +1,31 @@
 package com.toadsdewin.Hospital.Person;
+import javax.persistence.*;
 
+@MappedSuperclass
 public class PersonModel
 {
-    private String name;
+    @Column(name = "Nombre", nullable = false, length = 255)
+    public String name;
+    @Column(name = "Apellido", nullable = false, length = 255)
     private String surname;
+    @Column(name = "Edad", nullable = false, unique = true)
     private Integer age;
-    private Integer phoneNumber;
+    @Column(name = "País", nullable = false, length = 255)
     private String countryOfOrigin;
-
     public PersonModel()
     {
-        name    = "John";
+        name = "John";
         surname = "Doe";
         age     =  30;
-        phoneNumber = 5551234;
         countryOfOrigin = "United States";
     }
-    public PersonModel(String name, String surname, String countryOfOrigin, Integer age, Integer phoneNumber)
+    public PersonModel(String name, String surname, String countryOfOrigin, Integer age)
     {
         this.name = name;
         this.surname = surname;
         this.countryOfOrigin = countryOfOrigin;
         this.age = age;
-        this.phoneNumber = phoneNumber;
     }
-
     /**Getters and Setters**/
     public String getName() {
         return name;
@@ -34,9 +35,6 @@ public class PersonModel
     }
     public Integer getAge() {
         return age;
-    }
-    public Integer getPhoneNumber() {
-        return phoneNumber;
     }
     public String getCountryOfOrigin() {
         return countryOfOrigin;
@@ -49,9 +47,6 @@ public class PersonModel
     }
     public void setAge(Integer age) {
         this.age = age;
-    }
-    public void setPhoneNumber(Integer phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
     public void setCountryOfOrigin(String countryOfOrigin) {
         this.countryOfOrigin = countryOfOrigin;

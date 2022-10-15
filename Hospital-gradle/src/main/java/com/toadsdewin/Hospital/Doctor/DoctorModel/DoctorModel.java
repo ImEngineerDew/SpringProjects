@@ -1,80 +1,48 @@
 package com.toadsdewin.Hospital.Doctor.DoctorModel;
+import com.toadsdewin.Hospital.Person.PersonModel;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "doctor")
-public class DoctorModel
+public class DoctorModel extends PersonModel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (unique = true, nullable = false)
+    @Column (name= "Id",unique = true, nullable = false)
     private Long id;
-
-    private String name;
-    private String surname;
+    @Column(name= "Especializacion",nullable = false,length = 255)
     private String specializationType;
-    private String countryOfOrigin;
+    @Column (name = "Salario",unique = true, nullable = false)
     private Integer wages;
 
-     public DoctorModel()
-    {
-        //Empty constructor
+    public DoctorModel() {
+
     }
-    public DoctorModel(Long id,String name, String surname, String countryOfOrigin, String specializationType, Integer wages)
+    public DoctorModel(Long id, String specializationType, Integer wages)
     {
+        super();
         this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.countryOfOrigin = countryOfOrigin;
         this.specializationType = specializationType;
         this.wages = wages;
     }
 
+    /** Getters and Setters **/
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getSpecializationType() {
         return specializationType;
     }
-
-    public void setSpecializationType(String specializationType) {
-        this.specializationType = specializationType;
-    }
-
     public Integer getWages() {
         return wages;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setSpecializationType(String specializationType) {
+        this.specializationType = specializationType;
+    }
     public void setWages(Integer wages) {
         this.wages = wages;
-    }
-
-    public String getCountryOfOrigin() {
-        return countryOfOrigin;
-    }
-
-    public void setCountryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
     }
 }
