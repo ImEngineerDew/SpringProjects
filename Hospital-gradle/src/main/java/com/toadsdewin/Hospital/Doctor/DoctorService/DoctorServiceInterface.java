@@ -5,4 +5,5 @@ import java.util.ArrayList;
 public interface DoctorServiceInterface
 {
     ArrayList<DoctorModel> getDoctors();
+    DoctorModel saveDoctor(DoctorModel doctor);
 }
