@@ -12,8 +12,8 @@ public class PatientModel extends PersonModel
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name= "Id",unique = true, nullable = false)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "doctor_id", nullable = false)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private DoctorModel doctor;
     @Column(name = "género", nullable = false)
     private String gender;

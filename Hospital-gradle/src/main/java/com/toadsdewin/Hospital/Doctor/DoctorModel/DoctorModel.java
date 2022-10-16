@@ -2,6 +2,7 @@ package com.toadsdewin.Hospital.Doctor.DoctorModel;
 import com.toadsdewin.Hospital.Patient.PatientModel.PatientModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "doctor")
@@ -16,15 +17,14 @@ public class DoctorModel extends PersonModel
     @Column (name = "Salario",unique = true, nullable = false)
     private Integer wages;
 
-    @ManyToOne
-    @JoinColumn(name= "id_patient", nullable = false)
-    private PatientModel patient;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<PatientModel> patient;
 
     public DoctorModel()
     {
         super();
     }
-    public DoctorModel(String name, String surname, String countryOfOrigin, Integer age, Long id, String specialization, Integer wages,PatientModel patient)
+    public DoctorModel(String name, String surname, String countryOfOrigin, Integer age, Long id, String specialization, Integer wages,List<PatientModel> patient)
     {
         super(name,surname,countryOfOrigin,age);
         this.id = id;
@@ -40,11 +40,19 @@ public class DoctorModel extends PersonModel
     public String getSpecialization() {
         return specialization;
     }
+    public List<PatientModel> getPatient()
+    {
+        return patient;
+    }
     public Integer getWages() {
         return wages;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public void setPatient(List<PatientModel> patient)
+    {
+        this.patient = patient;
     }
     public void setSpecializationType(String specializationType) {
         this.specialization = specializationType;
