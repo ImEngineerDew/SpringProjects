@@ -1,4 +1,5 @@
 package com.toadsdewin.Hospital.Doctor.DoctorModel;
+import com.toadsdewin.Hospital.Patient.PatientModel.PatientModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
 import javax.persistence.*;
 
@@ -15,16 +16,21 @@ public class DoctorModel extends PersonModel
     @Column (name = "Salario",unique = true, nullable = false)
     private Integer wages;
 
+    @ManyToOne
+    @JoinColumn(name= "id_patient", nullable = false)
+    private PatientModel patient;
+
     public DoctorModel()
     {
         super();
     }
-    public DoctorModel(String name, String surname, String countryOfOrigin, Integer age, Long id, String specialization, Integer wages)
+    public DoctorModel(String name, String surname, String countryOfOrigin, Integer age, Long id, String specialization, Integer wages,PatientModel patient)
     {
         super(name,surname,countryOfOrigin,age);
         this.id = id;
         this.specialization = specialization;
         this.wages = wages;
+        this.patient = patient;
     }
 
     /** Getters and Setters **/
