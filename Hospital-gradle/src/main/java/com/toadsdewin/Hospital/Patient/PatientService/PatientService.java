@@ -19,6 +19,13 @@ public class PatientService implements PatientServiceInterface
     }
     @Override
     public PatientModel savePatient(PatientModel patient) {
-        return patientRepository.save(patient);
+        if(patient.getId()== null)
+        {
+            return patientRepository.save(patient);
+        }
+        else
+        {
+            return null;
+        }
     }
 }

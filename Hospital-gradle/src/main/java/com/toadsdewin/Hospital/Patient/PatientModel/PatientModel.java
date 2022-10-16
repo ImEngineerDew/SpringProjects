@@ -28,6 +28,10 @@ public class PatientModel extends PersonModel
         this.doctor = doctor;
         this.gender = gender;
     }
+    public Long getId()
+    {
+        return id;
+    }
     public DoctorModel getDoctor() {
         return doctor;
     }
@@ -42,5 +46,9 @@ public class PatientModel extends PersonModel
     public void setGender(String gender)
     {
         this.gender = gender;
+    }
+    public void setId(Long id)
+    {
+        this.id =id;
     }
 }
