@@ -10,7 +10,7 @@ public interface PatientControllerInterface
     @GetMapping(path="/")
     ResponseEntity<String> answerPage();
     @PostMapping(path = "/add")
-    ResponseEntity<PatientModel>saveDoctorInfo(@Valid @RequestBody PatientModel patient);
+    ResponseEntity<PatientModel>savePatientInfo(@Valid @RequestBody PatientModel patient);
     @RequestMapping(value ="/query",params = "gender")
     ResponseEntity<Object>getByGender(@RequestParam String gender);
 }

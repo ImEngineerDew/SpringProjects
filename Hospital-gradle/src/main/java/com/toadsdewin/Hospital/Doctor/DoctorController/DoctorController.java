@@ -41,7 +41,8 @@ public class DoctorController implements  DoctorControllerInterface
         {
             error.getMessage();
         }
-        return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);   }
+        return new ResponseEntity<>(newDoctor,HttpStatus.CREATED);
+    }
 
     @Override
     public ResponseEntity<Object> getBySpecialization(String specialization) {
