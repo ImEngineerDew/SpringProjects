@@ -8,10 +8,15 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (unique = true, nullable = false)
     public Long id;
+    @Column(name="Nombre", nullable = false)
     private String name;
+    @Column(name="Apellidos", nullable = false)
     private String surname;
+    @Column(name="País",nullable = false)
     private String country;
+    @Column(name= "Correo", nullable = false)
     private String email;
+
     private String rol;
     private String career;
 
