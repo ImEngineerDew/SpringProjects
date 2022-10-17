@@ -6,18 +6,19 @@ import javax.persistence.*;
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (unique = true, nullable = false)
+    @Column (unique = true, nullable = false,length = 10)
     public Long id;
-    @Column(name="Nombre", nullable = false)
+    @Column(name="Nombre", nullable = false, length = 128)
     private String name;
-    @Column(name="Apellidos", nullable = false)
+    @Column(name="Apellidos", nullable = false, length = 128)
     private String surname;
-    @Column(name="País",nullable = false)
+    @Column(name="País",nullable = false, length = 128)
     private String country;
-    @Column(name= "Correo", nullable = false)
+    @Column(name= "Correo", nullable = false, length = 128)
     private String email;
-
+    @Column(name = "Cargo", nullable = false, length = 128)
     private String rol;
+    @Column(name = "Profesión", nullable = false, length = 128)
     private String career;
 
     public UserModel() {} /*An empty constructor*/
