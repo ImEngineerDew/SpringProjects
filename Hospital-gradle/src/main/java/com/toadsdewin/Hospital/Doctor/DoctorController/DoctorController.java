@@ -1,6 +1,8 @@
 package com.toadsdewin.Hospital.Doctor.DoctorController;
 import com.toadsdewin.Hospital.Doctor.DoctorModel.DoctorModel;
 import com.toadsdewin.Hospital.Doctor.DoctorService.DoctorServiceInterface;
+import com.toadsdewin.Hospital.Patient.PatientModel.PatientModel;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,12 @@ public class DoctorController implements  DoctorControllerInterface
 {
     @Autowired
     DoctorServiceInterface doctorService;
+
+    @Override
+    public ResponseEntity<PatientModel>getPatient()
+    {
+        return null;
+    }
 
     @Override
     public ResponseEntity<String> answerPage()
