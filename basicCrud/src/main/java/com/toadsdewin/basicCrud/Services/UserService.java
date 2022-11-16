@@ -44,7 +44,7 @@ public class UserService implements UserServiceInterface
 
                     return userRepository.save(userModel);
                 }
-        ).get();
+        ).orElse(null);
     }
     @Override
     public UserModel getById(Long id)

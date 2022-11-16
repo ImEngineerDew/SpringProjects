@@ -8,6 +8,7 @@ public interface UserServiceInterface
     public UserModel upgradeUser(UserModel user, Long id);
     public UserModel getById(Long id);
     public List<UserModel> getAllUsers();
+    public List<UserModel> getByCountry(String country);
     public List<UserModel> getByName(String name);
     public List<UserModel> getBySurname(String surname);
     public List<UserModel> getByOccupation(String occupation);

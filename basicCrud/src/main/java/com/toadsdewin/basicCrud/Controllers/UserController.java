@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "api/basicCRUD")
+@RequestMapping(path = "api/basicCrud")
 public class UserController implements UserControllerInterface
 {
     @Autowired
@@ -31,25 +31,18 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
     {
-        UserModel userSaved = null;
-        try {
-            userSaved = this.userServiceInterface.saveUser(user);
-        }
-        catch(Exception error)
-        {
-            error.getMessage();
-        }
+        UserModel userSaved = this.userServiceInterface.saveUser(user);
         return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
     }
     /**UPGRADE METHOD OR PUT METHOD**/
-    @Override
+    @PutMapping(path = "/add/{id}")
     public ResponseEntity<UserModel> upgradeUser(UserModel user,Long id)
     {
         UserModel userUpgraded =  this.userServiceInterface.upgradeUser(user,id);
         return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
     /**Checking if the database exists or not**/
-    @Override
+    @GetMapping(path = "/all")
     public ResponseEntity<?>getAllUsers()
     {
         ArrayList<UserModel> allUsers = this.userServiceInterface.getUsers();
@@ -139,7 +132,7 @@ public class UserController implements UserControllerInterface
         return new ResponseEntity<>(userExist,HttpStatus.OK);
     }
     /**This line code might delete the user by id**/
-    @Override
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(Long id)
     {
         boolean ok = this.userServiceInterface.deleteUser(id);

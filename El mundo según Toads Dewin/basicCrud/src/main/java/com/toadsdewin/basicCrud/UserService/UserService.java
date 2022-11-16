@@ -26,7 +26,16 @@ public class UserService  implements  UserServiceInterface
     @Override
     public UserModel upgradeUser(UserModel user, Long id)
     {
-        return null;
+        return userRepository.findById(id).map(
+            userModel -> {
+                userModel.setName(user.getName());
+                userModel.setSurname(user.getSurname());
+                userModel.setAge(user.getAge());
+                userModel.setProfession(user.getProfession());
+                userModel.setOccupation(user.getOccupation());
+                return userRepository.save(userModel);
+            }
+        ).orElse(null);
     }
 
     @Override
@@ -52,6 +61,11 @@ public class UserService  implements  UserServiceInterface
     @Override
     public List<UserModel> getByOccupation(String occupation) {
         return userRepository.findByOccupation(occupation);
+    }
+    @Override
+    public List<UserModel>getByCountry(String country)
+    {
+        return userRepository.findByCountry(country);
     }
 
     @Override
