@@ -31,7 +31,7 @@ public class UserController implements UserControllerInterface{
 
         if(isAvailable==true)
         {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nothing to found here!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Message: Nothing to found here!");
         }
         else
         {
@@ -148,14 +148,12 @@ public class UserController implements UserControllerInterface{
         UserModel userSaved = this.userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
     }
-
     @Override
     public ResponseEntity<UserModel> upgradeUser(UserModel user, Long id)
     {
         UserModel userUpgraded = this.userService.upgradeUser(user,id);
         return ResponseEntity.status(HttpStatus.OK).body(userUpgraded);
     }
-
     @Override
     public ResponseEntity<String> deleteUserById(Long id)
     {
