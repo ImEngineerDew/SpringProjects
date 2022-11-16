@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController
@@ -127,6 +126,21 @@ public class UserController implements UserControllerInterface{
         else
         {
             return ResponseEntity.status(HttpStatus.OK).body(ageAvailable);
+        }
+    }
+    @Override
+    public ResponseEntity<Object>getProfession(String profession)
+    {
+        List<UserModel> professionAvailable = this.userService.getByProfession(profession);
+        boolean isExist = professionAvailable.isEmpty();
+
+        if(isExist == true)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Profession not found");
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(professionAvailable);
         }
     }
     @Override
