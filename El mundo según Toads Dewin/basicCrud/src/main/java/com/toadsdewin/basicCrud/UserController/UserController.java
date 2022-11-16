@@ -24,7 +24,8 @@ public class UserController implements UserControllerInterface{
         return ResponseEntity.status(HttpStatus.OK).body("Message: "+message);
     }
     @Override
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllUsers()
+    {
         List<UserModel> allUsers = this.userService.getAllUsers();
         boolean isAvailable = allUsers.isEmpty();
 
@@ -38,7 +39,8 @@ public class UserController implements UserControllerInterface{
         }
     }
     @Override
-    public ResponseEntity<?> getUserById(Long id) {
+    public ResponseEntity<?> getUserById(Long id)
+    {
         UserModel userId = this.userService.getById(id);
         boolean isAvailable = false;
         if(isAvailable)
@@ -141,19 +143,22 @@ public class UserController implements UserControllerInterface{
         }
     }
     @Override
-    public ResponseEntity<UserModel> saveUser(UserModel user) {
+    public ResponseEntity<UserModel> saveUser(UserModel user)
+    {
         UserModel userSaved = this.userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
     }
 
     @Override
-    public ResponseEntity<UserModel> upgradeUser(UserModel user, Long id) {
+    public ResponseEntity<UserModel> upgradeUser(UserModel user, Long id)
+    {
         UserModel userUpgraded = this.userService.upgradeUser(user,id);
         return ResponseEntity.status(HttpStatus.OK).body(userUpgraded);
     }
 
     @Override
-    public ResponseEntity<String> deleteUserById(Long id) {
+    public ResponseEntity<String> deleteUserById(Long id)
+    {
         boolean isErased = this.userService.deleteUserById(id);
 
         if(isErased)
