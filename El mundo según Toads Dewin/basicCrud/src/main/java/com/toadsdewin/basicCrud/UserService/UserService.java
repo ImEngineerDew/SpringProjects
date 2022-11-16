@@ -22,7 +22,6 @@ public class UserService  implements  UserServiceInterface
             return null;
         }
     }
-
     @Override
     public UserModel upgradeUser(UserModel user, Long id)
     {
@@ -37,27 +36,22 @@ public class UserService  implements  UserServiceInterface
             }
         ).orElse(null);
     }
-
     @Override
     public UserModel getById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
-
     @Override
     public List<UserModel> getAllUsers() {
         return userRepository.findAll();
     }
-
     @Override
     public List<UserModel> getByName(String name) {
         return userRepository.findByName(name);
     }
-
     @Override
     public List<UserModel> getBySurname(String surname) {
         return userRepository.findBySurname(surname);
     }
-
     @Override
     public List<UserModel> getByOccupation(String occupation) {
         return userRepository.findByOccupation(occupation);
@@ -67,12 +61,10 @@ public class UserService  implements  UserServiceInterface
     {
         return userRepository.findByCountry(country);
     }
-
     @Override
     public List<UserModel> getByProfession(String profession) {
         return userRepository.findByProfession(profession);
     }
-
     @Override
     public List<UserModel> getByAge(Integer age) {
         return userRepository.findByAge(age);
