@@ -6,8 +6,6 @@ import javax.validation.Valid;
 
 public interface UserControllerInterface
 {
-    @GetMapping(path="/test")
-    public ResponseEntity<String> messageTest();
     @GetMapping(path="/all")
     public ResponseEntity<?> getAllUsers();
     @GetMapping(path="/{id}")

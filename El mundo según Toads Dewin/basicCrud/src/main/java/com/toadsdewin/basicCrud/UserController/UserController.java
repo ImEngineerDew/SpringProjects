@@ -17,14 +17,11 @@ public class UserController implements UserControllerInterface{
     UserService userService;
 
     @GetMapping("/")
-    public String getTest()
+    public ResponseEntity<String> getTest(String message)
     {
-        return "home";
-    }
-
-    @Override
-    public ResponseEntity<String> messageTest() {
-        return ResponseEntity.status(HttpStatus.OK).body("Test successful");
+        message = "Testing successfull";
+        System.out.println("Message: "+message);
+        return ResponseEntity.status(HttpStatus.OK).body("Message: "+message);
     }
     @Override
     public ResponseEntity<?> getAllUsers() {
