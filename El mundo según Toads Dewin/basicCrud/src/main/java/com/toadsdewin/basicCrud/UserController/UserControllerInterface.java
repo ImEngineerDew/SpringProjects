@@ -10,10 +10,8 @@ public interface UserControllerInterface
 {
     @GetMapping(path="/test")
     public ResponseEntity<String> messageTest();
-
     @GetMapping(path="/all")
     public ResponseEntity<?> getAllUsers();
-
     @GetMapping(path="/{id}")
     public ResponseEntity<?>getUserById(@Valid @RequestBody Long id);
     @RequestMapping(value = "query", params = "country")
@@ -24,13 +22,12 @@ public interface UserControllerInterface
     public ResponseEntity<Object> getSurname(@RequestParam String surname);
     @RequestMapping (value = "query", params = "occupation")
     public ResponseEntity<Object> getOccupation(@RequestParam String occupation);
-
+    @RequestMapping(value= "query", params = "age")
+    public ResponseEntity<Object> getAge(@RequestParam Integer age);
     @PostMapping(path="/add")
     public ResponseEntity<UserModel>saveUser(@Valid @RequestBody UserModel user);
-
     @PutMapping(path="/add/{id}")
     public ResponseEntity<UserModel> upgradeUser(@Valid @RequestBody UserModel user, @Valid @RequestBody Long id);
-
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String>deleteUserById(@Valid @RequestParam("id")Long id);
 }
