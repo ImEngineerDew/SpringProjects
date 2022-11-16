@@ -20,6 +20,8 @@ public interface UserControllerInterface
     public ResponseEntity<Object> getCountry(@RequestParam String country);
     @RequestMapping(value = "query", params = "name")
     public ResponseEntity<Object> getName(@RequestParam String name);
+    @RequestMapping(value = "query" , params = "surname")
+    public ResponseEntity<Object> getSurname(@RequestParam String surname);
 
     @PostMapping(path="/add")
     public ResponseEntity<UserModel>saveUser(@Valid @RequestBody UserModel user);

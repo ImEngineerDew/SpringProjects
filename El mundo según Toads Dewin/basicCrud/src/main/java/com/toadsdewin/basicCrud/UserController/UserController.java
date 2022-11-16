@@ -4,6 +4,7 @@ import com.toadsdewin.basicCrud.UserService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,6 +83,21 @@ public class UserController implements UserControllerInterface{
         else
         {
             return ResponseEntity.status(HttpStatus.OK).body(nameAvailable);
+        }
+    }
+    @Override
+    public ResponseEntity<Object>getSurname(String surname)
+    {
+        List<UserModel> surnameAvailable = this.userService.getBySurname(surname);
+        boolean isExist = surnameAvailable.isEmpty();
+
+        if(isExist == true)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Surname doesn't exist in the list");
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(surnameAvailable);
         }
     }
 
