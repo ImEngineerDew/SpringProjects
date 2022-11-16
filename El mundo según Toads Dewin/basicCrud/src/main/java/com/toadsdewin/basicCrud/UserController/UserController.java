@@ -100,7 +100,21 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(surnameAvailable);
         }
     }
+    @Override
+    public ResponseEntity<Object> getOccupation(String occupation)
+    {
+        List<UserModel> occupationAvailable = this.userService.getByOccupation(occupation);
+        boolean isExist = occupationAvailable.isEmpty();
 
+        if(isExist==true)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Occupation not found!");
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(occupationAvailable);
+        }
+    }
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user) {
         UserModel userSaved = this.userService.saveUser(user);

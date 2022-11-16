@@ -22,6 +22,8 @@ public interface UserControllerInterface
     public ResponseEntity<Object> getName(@RequestParam String name);
     @RequestMapping(value = "query" , params = "surname")
     public ResponseEntity<Object> getSurname(@RequestParam String surname);
+    @RequestMapping (value = "query", params = "occupation")
+    public ResponseEntity<Object> getOccupation(@RequestParam String occupation);
 
     @PostMapping(path="/add")
     public ResponseEntity<UserModel>saveUser(@Valid @RequestBody UserModel user);
