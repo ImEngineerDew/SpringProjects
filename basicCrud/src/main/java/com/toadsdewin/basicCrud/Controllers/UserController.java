@@ -32,7 +32,7 @@ public class UserController implements UserControllerInterface
     public ResponseEntity<UserModel> saveUser(UserModel user)
     {
         UserModel userSaved = this.userServiceInterface.saveUser(user);
-        return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
     }
     /**UPGRADE METHOD OR PUT METHOD**/
     @PutMapping(path = "/add/{id}")
@@ -112,24 +112,15 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<?> getUserById(Long id)
     {
-        UserModel userExist = null;
-        Map<String,Object> response = new HashMap<>();
-        try
-        {
-            userExist = userServiceInterface.getById(id);
-        }
-        catch(DataAccessException error)
-        {
-            response.put("Message", "DB doesn't exist yet!");
-            response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        UserModel userExist = userServiceInterface.getById(id);
         if(userExist == null)
         {
-            response.put("Message", "The person ID: ".concat(id.toString().concat(" doesn't exist in the database!")));
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Message: The person with id: "+id+" doesn't exist in the database!");
         }
-        return new ResponseEntity<>(userExist,HttpStatus.OK);
+        else
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(userExist);
+        }
     }
     /**This line code might delete the user by id**/
     @DeleteMapping(path = "/{id}")

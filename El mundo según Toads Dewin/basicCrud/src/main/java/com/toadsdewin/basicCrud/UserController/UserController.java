@@ -41,15 +41,14 @@ public class UserController implements UserControllerInterface{
     @Override
     public ResponseEntity<?> getUserById(Long id)
     {
-        UserModel userId = this.userService.getById(id);
-        boolean isAvailable = false;
-        if(isAvailable)
+        UserModel userExist = userService.getById(id);
+        if(userExist == null)
         {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ths id doesn't exist!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Message: The person with id: "+id+" doesn't exist in the database!");
         }
         else
         {
-            return ResponseEntity.status(HttpStatus.OK).body(userId);
+            return ResponseEntity.status(HttpStatus.OK).body(userExist);
         }
     }
     @Override

@@ -9,7 +9,7 @@ public interface UserControllerInterface
     @GetMapping(path="/all")
     public ResponseEntity<?> getAllUsers();
     @GetMapping(path="/{id}")
-    public ResponseEntity<?>getUserById(@Valid @RequestBody Long id);
+    public ResponseEntity<?>getUserById(@PathVariable (value ="id") Long id);
     @RequestMapping(value = "query", params = "country")
     public ResponseEntity<Object> getCountry(@RequestParam String country);
     @RequestMapping(value = "query", params = "name")

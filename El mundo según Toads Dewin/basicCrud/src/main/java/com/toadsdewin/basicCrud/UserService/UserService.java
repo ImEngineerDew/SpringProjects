@@ -4,6 +4,7 @@ import com.toadsdewin.basicCrud.UserRepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService  implements  UserServiceInterface
@@ -37,7 +38,8 @@ public class UserService  implements  UserServiceInterface
         ).orElse(null);
     }
     @Override
-    public UserModel getById(Long id) {
+    public UserModel getById(Long id)
+    {
         return userRepository.findById(id).orElse(null);
     }
     @Override
