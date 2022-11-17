@@ -16,6 +16,7 @@ public class UserController implements UserControllerInterface{
     @Autowired
     UserService userService;
 
+    /**Testing method**/
     @GetMapping("/")
     public ResponseEntity<String> getTest(String message)
     {
@@ -23,6 +24,7 @@ public class UserController implements UserControllerInterface{
         System.out.println("Message: "+message);
         return ResponseEntity.status(HttpStatus.OK).body("Message: "+message);
     }
+    /**Method for getting all of these users**/
     @Override
     public ResponseEntity<?> getAllUsers()
     {
