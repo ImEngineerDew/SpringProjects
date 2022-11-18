@@ -24,7 +24,7 @@ public class UserController implements UserControllerInterface{
         System.out.println("Message: "+message);
         return ResponseEntity.status(HttpStatus.OK).body("Message: "+message);
     }
-    /**Method for getting all of these users**/
+    /**Method for obtain all of the users from the DB**/
     @Override
     public ResponseEntity<?> getAllUsers()
     {
@@ -40,6 +40,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
         }
     }
+    /**Method for getting an user from their id**/
     @Override
     public ResponseEntity<?> getUserById(Long id)
     {
@@ -53,6 +54,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(userExist);
         }
     }
+    /**Method that give an user from country**/
     @Override
     public ResponseEntity<Object>getCountry(String country)
     {
