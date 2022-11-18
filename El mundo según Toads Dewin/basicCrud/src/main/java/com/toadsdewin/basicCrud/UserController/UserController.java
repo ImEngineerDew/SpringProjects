@@ -70,6 +70,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(countryAvailable);
         }
     }
+    /**Method that give an user from name**/
     @Override
     public ResponseEntity<Object>getName(String name)
     {
@@ -85,6 +86,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(nameAvailable);
         }
     }
+    /**Method that give an user from surname**/
     @Override
     public ResponseEntity<Object>getSurname(String surname)
     {
@@ -100,6 +102,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(surnameAvailable);
         }
     }
+    /**Method that give an user from occupation**/
     @Override
     public ResponseEntity<Object> getOccupation(String occupation)
     {
@@ -115,6 +118,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(occupationAvailable);
         }
     }
+    /**Method that give an user from age**/
     @Override
     public ResponseEntity<Object>getAge(Integer age)
     {
