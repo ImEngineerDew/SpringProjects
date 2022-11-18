@@ -33,6 +33,7 @@ public class UserService  implements  UserServiceInterface
                 userModel.setAge(user.getAge());
                 userModel.setProfession(user.getProfession());
                 userModel.setOccupation(user.getOccupation());
+                userModel.setCountry(user.getCountry());
                 return userRepository.save(userModel);
             }
         ).orElse(null);
