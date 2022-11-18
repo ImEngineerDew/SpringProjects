@@ -25,7 +25,7 @@ public interface UserControllerInterface
     @PostMapping(path="/add")
     public ResponseEntity<UserModel>saveUser(@Valid @RequestBody UserModel user);
     @PutMapping(path="/add/{id}")
-    public ResponseEntity<UserModel> upgradeUser(@Valid @RequestBody UserModel user, @Valid @RequestBody Long id);
+    public ResponseEntity<UserModel> upgradeUser(@Valid @RequestBody UserModel user, @Valid @PathVariable(value = "id") Long id);
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String>deleteUserById(@PathVariable("id")Long id);
 }
