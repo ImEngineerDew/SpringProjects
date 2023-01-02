@@ -33,33 +33,18 @@ public class UserService implements UserServiceInterface
     @Override
     public UserModel upgradeUser(UserModel user, Long id)
     {
-        try {
-            UserModel upgrade = userRepository.findById(id).get();
+        return userRepository.findById(id).map(
+                userModel -> {
+                    userModel.setName(user.getName());
+                    userModel.setSurname(user.getSurname());
+                    userModel.setCountry(user.getCountry());
+                    userModel.setEmail(user.getEmail());
+                    userModel.setRol(user.getRol());
+                    userModel.setCountry(user.getCareer());
 
-            if (Objects.nonNull(user.getName()) && !"".equalsIgnoreCase(user.getName())) {
-                upgrade.setName(user.getName());
-            }
-            if (Objects.nonNull(user.getSurname()) && !"".equalsIgnoreCase(user.getSurname())) {
-                upgrade.setSurname(user.getSurname());
-            }
-            if (Objects.nonNull(user.getCountry()) && !"".equalsIgnoreCase(user.getCountry())) {
-                upgrade.setCountry(user.getCountry());
-            }
-            if (Objects.nonNull(user.getEmail()) && !"".equalsIgnoreCase(user.getEmail())) {
-                upgrade.setEmail(user.getEmail());
-            }
-            if (Objects.nonNull(user.getRol()) && !"".equalsIgnoreCase(user.getRol())) {
-                upgrade.setRol(user.getRol());
-            }
-            if (Objects.nonNull(user.getCareer()) && !"".equalsIgnoreCase(user.getCareer())) {
-                upgrade.setCareer(user.getCareer());
-            }
-            return userRepository.save(upgrade);
-        }catch(Exception error)
-        {
-            error.getMessage();
-        }
-        return null;
+                    return userRepository.save(userModel);
+                }
+        ).orElse(null);
     }
     @Override
     public UserModel getById(Long id)

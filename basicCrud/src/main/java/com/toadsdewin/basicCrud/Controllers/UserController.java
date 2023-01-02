@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "api/basicCRUD")
+@RequestMapping(path = "api/basicCrud")
 public class UserController implements UserControllerInterface
 {
     @Autowired
@@ -31,25 +31,18 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<UserModel> saveUser(UserModel user)
     {
-        UserModel userSaved = null;
-        try {
-            userSaved = this.userServiceInterface.saveUser(user);
-        }
-        catch(Exception error)
-        {
-            error.getMessage();
-        }
-        return new ResponseEntity<>(userSaved,HttpStatus.CREATED);
+        UserModel userSaved = this.userServiceInterface.saveUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
     }
     /**UPGRADE METHOD OR PUT METHOD**/
-    @Override
+    @PutMapping(path = "/add/{id}")
     public ResponseEntity<UserModel> upgradeUser(UserModel user,Long id)
     {
         UserModel userUpgraded =  this.userServiceInterface.upgradeUser(user,id);
         return ResponseEntity.status(HttpStatus.CREATED).body(userUpgraded);
     }
     /**Checking if the database exists or not**/
-    @Override
+    @GetMapping(path = "/all")
     public ResponseEntity<?>getAllUsers()
     {
         ArrayList<UserModel> allUsers = this.userServiceInterface.getUsers();
@@ -119,27 +112,18 @@ public class UserController implements UserControllerInterface
     @Override
     public ResponseEntity<?> getUserById(Long id)
     {
-        UserModel userExist = null;
-        Map<String,Object> response = new HashMap<>();
-        try
-        {
-            userExist = userServiceInterface.getById(id);
-        }
-        catch(DataAccessException error)
-        {
-            response.put("Message", "DB doesn't exist yet!");
-            response.put("error", error.getMessage().concat(": ").concat(error.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        UserModel userExist = userServiceInterface.getById(id);
         if(userExist == null)
         {
-            response.put("Message", "The person ID: ".concat(id.toString().concat(" doesn't exist in the database!")));
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Message: The person with id: "+id+" doesn't exist in the database!");
         }
-        return new ResponseEntity<>(userExist,HttpStatus.OK);
+        else
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(userExist);
+        }
     }
     /**This line code might delete the user by id**/
-    @Override
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(Long id)
     {
         boolean ok = this.userServiceInterface.deleteUser(id);
