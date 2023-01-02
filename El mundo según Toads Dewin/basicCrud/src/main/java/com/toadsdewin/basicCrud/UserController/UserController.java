@@ -20,11 +20,11 @@ public class UserController implements UserControllerInterface{
     @GetMapping("/")
     public ResponseEntity<String> getTest(String message)
     {
-        message = "Testing successfull";
+        message = "Testing successfully";
         System.out.println("Message: "+message);
         return ResponseEntity.status(HttpStatus.OK).body("Message: "+message);
     }
-    /**Method for obtain all of the users from the DB**/
+    /**Method for obtain all the users from the DB**/
     @Override
     public ResponseEntity<?> getAllUsers()
     {
@@ -40,7 +40,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(allUsers);
         }
     }
-    /**Method for getting an user from their id**/
+    /**Method for getting a user from their id**/
     @Override
     public ResponseEntity<?> getUserById(Long id)
     {
@@ -86,7 +86,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(nameAvailable);
         }
     }
-    /**Method that give an user from surname**/
+    /**Method that give a user from surname**/
     @Override
     public ResponseEntity<Object>getSurname(String surname)
     {
@@ -102,7 +102,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(surnameAvailable);
         }
     }
-    /**Method that give an user from occupation**/
+    /**Method that give a user from occupation**/
     @Override
     public ResponseEntity<Object> getOccupation(String occupation)
     {
@@ -118,7 +118,7 @@ public class UserController implements UserControllerInterface{
             return ResponseEntity.status(HttpStatus.OK).body(occupationAvailable);
         }
     }
-    /**Method that give an user from age**/
+    /**Method that give a user from age**/
     @Override
     public ResponseEntity<Object>getAge(Integer age)
     {
