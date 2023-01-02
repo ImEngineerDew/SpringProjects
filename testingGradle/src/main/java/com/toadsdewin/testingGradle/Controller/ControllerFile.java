@@ -13,6 +13,8 @@ public class ControllerFile
     @GetMapping(path= "answer")
     public ResponseEntity<String> getMessage()
     {
+        System.out.println("Hello world!");
         return ResponseEntity.status(HttpStatus.OK).body("Hello world!");
+
     }
 }
