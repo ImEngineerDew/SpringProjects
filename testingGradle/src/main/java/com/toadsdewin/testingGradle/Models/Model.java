@@ -1,11 +1,11 @@
 package com.toadsdewin.testingGradle.Models;
 import javax.persistence.*;
 import lombok.Data;
+import java.io.Serializable;
 
-@Entity
-@Table
 @Data
-public class Model
+@MappedSuperclass
+public class Model implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
