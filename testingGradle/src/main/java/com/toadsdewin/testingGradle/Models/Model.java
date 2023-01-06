@@ -7,12 +7,12 @@ import java.io.Serializable;
 @MappedSuperclass
 public class Model implements Serializable
 {
-    @Column(nullable = false, length = 50)
+    @Column(name = "Nombre", nullable = false, length = 50)
     private String firstName;
-    @Column(nullable = false, length = 50)
+    @Column(name = "Apellido", nullable = false, length = 50)
     private String lastName;
-    @Column(nullable = false, length = 25)
+    @Column(name = "país", nullable = false, length = 25)
     private String country;
-    @Column(nullable = false,length = 2)
+    @Column(name = "edad", nullable = false,length = 2)
     private Integer age;
 }
