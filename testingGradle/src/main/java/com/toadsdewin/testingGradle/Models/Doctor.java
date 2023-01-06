@@ -1,12 +1,11 @@
 package com.toadsdewin.testingGradle.Models;
 import lombok.Data;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Data
-@Table
 @Entity
+@Table
 public class Doctor extends Model
 {
     @Column(nullable = false, length = 10)
