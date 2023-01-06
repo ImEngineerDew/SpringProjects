@@ -1,18 +1,19 @@
 package com.toadsdewin.testingGradle.Models;
-import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
-@Table
 @Entity
-@EqualsAndHashCode(callSuper = true)
 public class Doctor extends Model
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, nullable = false, length = 5)
     private Long doctorId;
     @Column(nullable = false, length = 10)
     private String specialization;
     @Column (nullable = false, length = 10)
     private String universityOfOrigin;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "patient_id",nullable = false)
+    private Patient patient;
 }
