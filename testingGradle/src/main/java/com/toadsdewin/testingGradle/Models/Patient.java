@@ -15,7 +15,4 @@ public class Patient extends Model
 
     @Column(name = "Departamento de origen", nullable = false, length = 25)
     private String provinceOfOrigin;
-
-    @OneToMany(mappedBy = "patient")
-    private Set<Doctor> doctorList;
 }

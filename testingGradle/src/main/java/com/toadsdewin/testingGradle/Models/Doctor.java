@@ -13,7 +13,5 @@ public class Doctor extends Model
     @Column (nullable = false, length = 10)
     private String universityOfOrigin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "patient_id",nullable = false)
-    private Patient patient;
+
 }
