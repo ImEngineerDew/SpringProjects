@@ -7,10 +7,6 @@ import java.io.Serializable;
 @MappedSuperclass
 public class Model implements Serializable
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, nullable = false, length = 5)
-    private Long id;
     @Column(nullable = false, length = 50)
     private String firstName;
     @Column(nullable = false, length = 50)
