@@ -3,7 +3,6 @@ import com.toadsdewin.Hospital.Patient.PatientModel.PatientModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
 import javax.persistence.*;
 import java.util.List;
-
 @Entity
 @Table(name = "doctor")
 public class DoctorModel extends PersonModel
