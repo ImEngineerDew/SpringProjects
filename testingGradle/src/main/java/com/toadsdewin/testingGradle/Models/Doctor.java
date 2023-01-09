@@ -2,6 +2,7 @@ package com.toadsdewin.testingGradle.Models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "doctor")
 public class Doctor extends Model
 {
     @Id
@@ -12,6 +13,4 @@ public class Doctor extends Model
     private String specialization;
     @Column (nullable = false, length = 10)
     private String universityOfOrigin;
-
-
 }

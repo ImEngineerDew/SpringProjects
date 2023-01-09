@@ -3,6 +3,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "patient")
 public class Patient extends Model
 {
     @Id
