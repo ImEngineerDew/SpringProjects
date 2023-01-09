@@ -16,6 +16,6 @@ public class Patient extends Model
     private String provinceOfOrigin;
     @Column(name = "Especialidad",nullable = false,length = 50)
     private String specialization;
-    @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Doctor> doctorList;
 }

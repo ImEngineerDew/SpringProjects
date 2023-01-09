@@ -10,6 +10,7 @@ public class Doctor extends Model
     @Column(unique = true, nullable = false, length = 20)
     private Long idDoctor;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "idPatient")
     private Patient patient;
 }
