@@ -1,6 +1,7 @@
 package com.toadsdewin.testingGradle.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Patient")
@@ -15,4 +16,7 @@ public class Patient extends Model
     private String provinceOfOrigin;
     @Column(name = "Especialidad",nullable = false,length = 50)
     private String specialization;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private List<Doctor> doctorList;
 }
