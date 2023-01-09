@@ -9,6 +9,7 @@ public class Doctor extends Model
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, nullable = false, length = 20)
     private Long idDoctor;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @OneToMany(fetch = FetchType.LAZY)
     private Patient patient;
 }
