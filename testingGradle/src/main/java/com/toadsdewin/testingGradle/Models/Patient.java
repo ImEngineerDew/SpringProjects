@@ -1,14 +1,13 @@
 package com.toadsdewin.testingGradle.Models;
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "patient")
 public class Patient extends Model
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(unique = true, nullable = false, length = 10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, length = 10)
     private Long patientID;
 
     @Column(name= "Especialización", nullable = false, length = 25)
