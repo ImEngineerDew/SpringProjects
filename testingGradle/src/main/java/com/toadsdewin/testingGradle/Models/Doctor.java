@@ -1,6 +1,8 @@
 package com.toadsdewin.testingGradle.Models;
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+@Data
 @Entity
 @Table(name = "Doctor")
 public class Doctor extends Model
