@@ -13,7 +13,7 @@ public class PatientModel extends PersonModel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name= "Id",unique = true, nullable = false)
+    @Column (name= "id",unique = true, nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,5 +32,14 @@ public class PatientModel extends PersonModel
         this.gender = gender;
     }
     /**Getters and Setters**/
+
+    public Long getId()
+    {
+        return id;
+    }
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
     /**Used by Lombok**/
 }

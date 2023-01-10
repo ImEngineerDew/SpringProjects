@@ -1,16 +1,19 @@
 package com.toadsdewin.Hospital.Doctor.DoctorModel;
 import com.toadsdewin.Hospital.Patient.PatientModel.PatientModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "doctor")
 public class DoctorModel extends PersonModel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name= "Id",unique = true, nullable = false)
+    @Column (name= "id",unique = true, nullable = false)
     private Long id;
     @Column(name = "Especializacion",nullable = false,length = 255)
     private String specialization;
@@ -32,32 +35,15 @@ public class DoctorModel extends PersonModel
         this.wages = wages;
         this.patient = patient;
     }
+    /**Getters and Setters**/
+    /**Used by Lombok**/
 
-    /** Getters and Setters **/
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
-    public String getSpecialization() {
-        return specialization;
-    }
-    public List<PatientModel> getPatient()
+    public void setId(Long id)
     {
-        return patient;
-    }
-    public Integer getWages() {
-        return wages;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public void setPatient(List<PatientModel> patient)
-    {
-        this.patient = patient;
-    }
-    public void setSpecializationType(String specializationType) {
-        this.specialization = specializationType;
-    }
-    public void setWages(Integer wages) {
-        this.wages = wages;
+        this.id =id;
     }
 }
