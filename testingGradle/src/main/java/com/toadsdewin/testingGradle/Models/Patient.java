@@ -1,13 +1,12 @@
 package com.toadsdewin.testingGradle.Models;
-
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "Patient")
+@EqualsAndHashCode(callSuper=false)
 public class Patient extends Model
 {
     @Id
@@ -19,6 +18,6 @@ public class Patient extends Model
     private String provinceOfOrigin;
     @Column(name = "Especialidad",nullable = false,length = 50)
     private String specialization;
-    @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "idDoctor",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Doctor> doctorList;
 }

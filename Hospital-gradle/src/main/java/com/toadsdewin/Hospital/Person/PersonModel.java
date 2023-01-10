@@ -2,10 +2,11 @@ package com.toadsdewin.Hospital.Person;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @MappedSuperclass
-public class PersonModel
+public class PersonModel implements Serializable
 {
     @Column(name = "Nombre", nullable = false, length = 255)
     public String name;

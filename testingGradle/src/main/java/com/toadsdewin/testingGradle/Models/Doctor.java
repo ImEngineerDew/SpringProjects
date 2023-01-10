@@ -1,10 +1,10 @@
 package com.toadsdewin.testingGradle.Models;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-@Data
 @Entity
 @Table(name = "Doctor")
+@EqualsAndHashCode(callSuper=false)
 public class Doctor extends Model
 {
     @Id
@@ -12,7 +12,7 @@ public class Doctor extends Model
     @Column(unique = true, nullable = false, length = 20)
     private Long idDoctor;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idPatient")
     private Patient patient;
 }
