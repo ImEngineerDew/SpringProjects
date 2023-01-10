@@ -15,4 +15,6 @@ public class Model implements Serializable
     private String country;
     @Column(name = "edad", nullable = false,length = 2)
     private Integer age;
+    @Column(name = "DNI", nullable = false, length = 12)
+    private Integer DNI;
 }
