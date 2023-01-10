@@ -3,6 +3,8 @@ import com.toadsdewin.Hospital.Doctor.DoctorModel.DoctorModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
 
 import javax.persistence.*;
+import java.util.*;
+import lombok.Data;
 
 @Entity
 @Table(name= "patient")
@@ -14,7 +16,7 @@ public class PatientModel extends PersonModel
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private DoctorModel doctor;
+    private List<DoctorModel> doctor;
     @Column(name = "género", nullable = false)
     private String gender;
 
@@ -22,7 +24,7 @@ public class PatientModel extends PersonModel
     {
         super();
     }
-    public PatientModel(String name, String surname, String countryOfOrigin, Integer age,DoctorModel doctor, String gender)
+    public PatientModel(String name, String surname, String countryOfOrigin, Integer age,List<DoctorModel> doctor, String gender)
     {
         super(name,surname,countryOfOrigin,age);
         this.doctor = doctor;
@@ -32,7 +34,7 @@ public class PatientModel extends PersonModel
     {
         return id;
     }
-    public DoctorModel getDoctor() {
+    public List<DoctorModel> getDoctor() {
         return doctor;
     }
     public String getGender()
@@ -40,7 +42,7 @@ public class PatientModel extends PersonModel
         return gender;
     }
 
-    public void setDoctor(DoctorModel doctor) {
+    public void setDoctor(List<DoctorModel> doctor) {
         this.doctor = doctor;
     }
     public void setGender(String gender)
