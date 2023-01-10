@@ -1,11 +1,12 @@
 package com.toadsdewin.Hospital.Patient.PatientModel;
 import com.toadsdewin.Hospital.Doctor.DoctorModel.DoctorModel;
 import com.toadsdewin.Hospital.Person.PersonModel;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.util.*;
-import lombok.Data;
 
+
+@Data
 @Entity
 @Table(name= "patient")
 public class PatientModel extends PersonModel
@@ -30,27 +31,6 @@ public class PatientModel extends PersonModel
         this.doctor = doctor;
         this.gender = gender;
     }
-    public Long getId()
-    {
-        return id;
-    }
-    public List<DoctorModel> getDoctor() {
-        return doctor;
-    }
-    public String getGender()
-    {
-        return gender;
-    }
-
-    public void setDoctor(List<DoctorModel> doctor) {
-        this.doctor = doctor;
-    }
-    public void setGender(String gender)
-    {
-        this.gender = gender;
-    }
-    public void setId(Long id)
-    {
-        this.id =id;
-    }
+    /**Getters and Setters**/
+    /**Used by Lombok**/
 }
