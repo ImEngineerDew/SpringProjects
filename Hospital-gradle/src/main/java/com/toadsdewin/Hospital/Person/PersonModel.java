@@ -1,6 +1,9 @@
 package com.toadsdewin.Hospital.Person;
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @MappedSuperclass
 public class PersonModel
 {
@@ -27,28 +30,5 @@ public class PersonModel
         this.age = age;
     }
     /**Getters and Setters**/
-    public String getName() {
-        return name;
-    }
-    public String getSurname() {
-        return surname;
-    }
-    public Integer getAge() {
-        return age;
-    }
-    public String getCountryOfOrigin() {
-        return countryOfOrigin;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-    public void setCountryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
-    }
+    /**Used by Lombok**/
 }
