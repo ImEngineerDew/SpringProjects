@@ -4,9 +4,8 @@ import com.toadsdewin.testingGradle.Services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class DoctorController
 {
     @Autowired
     DoctorService doctorService;
-    
+
     @GetMapping(path = "/all")
     public ResponseEntity<?> getAll()
     {
@@ -33,5 +32,11 @@ public class DoctorController
             System.out.println(checkedDoctors);
             return ResponseEntity.status(HttpStatus.OK).body(allDoctors);
         }
+    }
+    @PostMapping(path = "/add")
+    public ResponseEntity<Doctor> saveDoctor(@RequestBody Doctor doctor)
+    {
+        Doctor doctorSaved = this.doctorService.saveDoctor(doctor);
+        return ResponseEntity.status(HttpStatus.CREATED).body(doctor);
     }
 }
