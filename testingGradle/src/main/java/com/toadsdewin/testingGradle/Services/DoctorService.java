@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class DoctorService
+public class
+DoctorService
 {
     @Autowired
     DoctorRepository doctorRepository;
@@ -22,5 +23,18 @@ public class DoctorService
     public Doctor getById(Long id)
     {
         return this.doctorRepository.getById(id);
+    }
+
+    public Doctor upgradeDoctor(Doctor doctor, Long id)
+    {
+        return this.doctorRepository.findById(id).map(
+                doctorModel -> {
+                    doctorModel.setFirstName(doctor.getFirstName());
+                    doctorModel.setLastName(doctor.getLastName());
+                    doctorModel.setAge(doctor.getAge());
+
+                    return doctorRepository.save(doctorModel);
+                }
+        ).orElse(null);
     }
 }
