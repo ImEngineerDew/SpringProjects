@@ -32,6 +32,8 @@ DoctorService
                     doctorModel.setFirstName(doctor.getFirstName());
                     doctorModel.setLastName(doctor.getLastName());
                     doctorModel.setAge(doctor.getAge());
+                    doctorModel.setCountry(doctor.getCountry());
+                    doctorModel.setDNI(doctor.getDNI());
 
                     return doctorRepository.save(doctorModel);
                 }
