@@ -39,4 +39,15 @@ DoctorService
                 }
         ).orElse(null);
     }
+    public boolean deleteDoctor (Long id)
+    {
+        try
+        {
+            doctorRepository.deleteById(id);
+            return true;
+        }catch(Exception error)
+        {
+            return false;
+        }
+    }
 }

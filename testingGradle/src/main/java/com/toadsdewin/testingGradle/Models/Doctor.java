@@ -15,4 +15,6 @@ public class Doctor extends Model
     @ManyToOne
     @JoinColumn(name = "idPatient")
     private Patient patient;
+
+
 }
