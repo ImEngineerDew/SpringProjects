@@ -1,6 +1,4 @@
 package com.toadsdewin.testingGradle.Models;
-import lombok.EqualsAndHashCode;
-
 import javax.persistence.*;
 import java.util.List;
 
