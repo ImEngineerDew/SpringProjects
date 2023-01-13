@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 @Entity
 @Table(name = "Doctor")
-@EqualsAndHashCode(callSuper=false)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Doctor extends Model
 {
     @Id

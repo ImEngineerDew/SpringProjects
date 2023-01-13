@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Patient")
-@EqualsAndHashCode(callSuper=false)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Patient extends Model
 {
     @Id
