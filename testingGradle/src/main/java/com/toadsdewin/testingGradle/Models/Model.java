@@ -14,7 +14,7 @@ public class Model implements Serializable
     @Column(name = "país", nullable = false, length = 25)
     private String country;
     @Column(name = "edad", nullable = false,length = 2)
-    private Integer age;
+    private int age;
     @Column(name = "DNI", nullable = false, length = 9)
-    private Long  DNI;
+    private long  DNI;
 }
