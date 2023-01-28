@@ -41,7 +41,7 @@ public class DoctorController
     }
 
     @PutMapping(path = "/add/{id}")
-    public ResponseEntity<Doctor> upgradeDoctor(@RequestBody Doctor doctor,@PathVariable("id") Long id)
+    public ResponseEntity<Doctor> upgradeDoctor(@RequestBody Doctor doctor,@PathVariable("id./g") Long id)
     {
         Doctor doctorUpgrade = this.doctorService.upgradeDoctor(doctor,id);
         return ResponseEntity.status(HttpStatus.CREATED).body(doctorUpgrade);
