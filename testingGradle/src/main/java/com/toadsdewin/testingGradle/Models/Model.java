@@ -4,7 +4,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@MappedSuperclass
+@Inheritance(strategy =  InheritanceType.JOINED)
 public class Model implements Serializable
 {
     @Column(name = "Nombre", nullable = false, length = 50)

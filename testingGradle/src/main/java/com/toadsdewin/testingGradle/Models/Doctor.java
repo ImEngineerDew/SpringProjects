@@ -3,6 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Doctor")
+@PrimaryKeyJoinColumn(referencedColumnName = "doctor_model")
 public class Doctor extends Model
 {
     @Id

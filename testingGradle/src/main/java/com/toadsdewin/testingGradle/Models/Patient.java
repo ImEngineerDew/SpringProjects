@@ -4,6 +4,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Patient")
+@PrimaryKeyJoinColumn(referencedColumnName = "patient_model")
 public class Patient extends Model
 {
     @Id
