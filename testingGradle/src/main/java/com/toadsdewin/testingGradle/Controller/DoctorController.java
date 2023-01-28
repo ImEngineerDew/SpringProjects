@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import javax.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/doctor")
@@ -40,7 +41,7 @@ public class DoctorController
     }
 
     @PutMapping(path = "/add/{id}")
-    public ResponseEntity<Doctor> upgradeDoctor(Doctor doctor,Long id)
+    public ResponseEntity<Doctor> upgradeDoctor(@RequestBody Doctor doctor,@PathVariable("id") Long id)
     {
         Doctor doctorUpgrade = this.doctorService.upgradeDoctor(doctor,id);
         return ResponseEntity.status(HttpStatus.CREATED).body(doctorUpgrade);
