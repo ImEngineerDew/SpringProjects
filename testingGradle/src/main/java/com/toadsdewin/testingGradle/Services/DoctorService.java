@@ -23,7 +23,6 @@ public class DoctorService
     {
         return this.doctorRepository.getById(id);
     }
-
     public Doctor upgradeDoctor(Doctor doctor, Long id)
     {
         return this.doctorRepository.findById(id).map(
