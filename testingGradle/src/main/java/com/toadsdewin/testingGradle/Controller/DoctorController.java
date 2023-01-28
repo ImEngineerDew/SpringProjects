@@ -38,4 +38,11 @@ public class DoctorController
         Doctor doctorSaved = this.doctorService.saveDoctor(doctor);
         return ResponseEntity.status(HttpStatus.CREATED).body(doctor);
     }
+
+    @PutMapping(path = "/add/{id}")
+    public ResponseEntity<Doctor> upgradeDoctor(Doctor doctor,Long id)
+    {
+        Doctor doctorUpgrade = this.doctorService.upgradeDoctor(doctor,id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(doctorUpgrade);
+    }
 }
