@@ -6,10 +6,10 @@ import javax.persistence.*;
 public class Doctor extends Model
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, length = 20)
     private Long idDoctor;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "idPatient")
     private Patient patient;
 }
