@@ -4,7 +4,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "Patient")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Patient extends Model
 {
     @Id

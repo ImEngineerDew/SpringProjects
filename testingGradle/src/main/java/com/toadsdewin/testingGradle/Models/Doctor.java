@@ -3,7 +3,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Doctor")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Doctor extends Model
 {
     @Id
